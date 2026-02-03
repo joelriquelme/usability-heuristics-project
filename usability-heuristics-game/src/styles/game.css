@@ -1,0 +1,110 @@
+/* Global layout and basic styles for the game app
+   This stylesheet contains only structural styles used across the app.
+   Keep it CSS-only as requested and import it from components / App. */
+
+:root {
+  --bg: #f4f4f7;
+  --content-bg: #fff;
+  --border: #e6e6ea;
+  --primary: #007aff;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+}
+
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.uh-layout { display:flex; height:100vh; width:100%; }
+.uh-sidebar { width:240px; padding:24px; background:var(--content-bg); border-right:1px solid var(--border); }
+.uh-sidebar-header { font-weight:600; color:var(--muted); margin-bottom:12px; }
+.uh-level-list { list-style:none; padding:0; margin:0; }
+.uh-level-item { padding:10px 8px; border-radius:8px; color:var(--muted); cursor:pointer; }
+.uh-level-item.active { background:rgba(0,122,255,0.06); color:var(--primary); }
+
+/* hover and focus for level list */
+.uh-level-item { transition: background .14s ease, color .14s ease; }
+.uh-level-item a, .uh-level-item button { display:block; color:inherit; text-decoration:none; padding:6px 6px; border-radius:6px; }
+.uh-level-item:hover { background: rgba(0,0,0,0.03); color: var(--text); }
+.uh-level-item:hover .uh-level-star { transform: scale(1.05); }
+.uh-level-item a:focus-visible, .uh-level-item button:focus-visible, .uh-brand-link:focus-visible { outline: 3px solid rgba(0,122,255,0.14); outline-offset:2px; border-radius:6px; }
+.uh-level-star { transition: transform .12s ease; }
+
+/* star icon next to completed levels */
+.uh-level-star { display:inline-block; vertical-align:middle; }
+
+.uh-main { flex:1; display:flex; flex-direction:column; min-width:0; }
+.uh-topbar { display:flex; justify-content:space-between; align-items:center; padding:16px 28px; background:var(--content-bg); border-bottom:1px solid var(--border); box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+.uh-topbar-left { font-weight:600; }
+.uh-topbar-right { color:var(--muted); }
+
+/* Brand link styles */
+.uh-brand-link { color: inherit; text-decoration: none; padding: 6px 8px; border-radius: 6px; display: inline-block; }
+.uh-brand-link:hover { background: rgba(0,122,255,0.04); color: var(--primary); }
+
+/* hamburger button */
+.uh-hamburger { background: transparent; border: none; padding: 6px; display: inline-flex; align-items:center; justify-content:center; cursor:pointer; color:var(--muted); border-radius:6px; }
+.uh-hamburger:hover { background: rgba(0,0,0,0.03); color:var(--text); }
+.uh-hamburger:focus-visible { outline: 3px solid rgba(0,122,255,0.14); outline-offset:2px; }
+
+/* Sidebar as a collapsible drawer using transform animation
+  Animating transforms avoids layout reflow and reduces text flicker. */
+.uh-sidebar { width:240px; padding:24px; background:var(--content-bg); border-right:1px solid var(--border); transition: transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .18s ease; will-change: transform; position:fixed; left:0; top:0; bottom:0; height:100vh; z-index:30; }
+
+/* Slide the fixed sidebar in/out using transform (no layout reflow). */
+.uh-layout.sidebar-closed .uh-sidebar { transform: translateX(-260px); pointer-events:none; }
+.uh-layout.sidebar-open .uh-sidebar { transform: translateX(0); pointer-events:auto; }
+
+/* Improve rendering during animations: promote layers and enable font-smoothing */
+.uh-sidebar,
+.uh-main,
+.uh-game-container,
+.uh-game-screen,
+.uh-level-list,
+.uh-level-item,
+.uh-topbar,
+.uh-card {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+.uh-main { transition: transform .32s cubic-bezier(.2,.9,.2,1); }
+
+/* On wide screens shift the main content slightly when sidebar is open to emphasize layout. */
+@media (min-width:901px) {
+  .uh-layout.sidebar-open .uh-main { transform: translateX(240px); }
+  .uh-layout.sidebar-closed .uh-main { transform: translateX(0); }
+}
+
+/* overlay (hidden except on small screens) */
+.uh-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.28); opacity:0; pointer-events:none; transition: opacity .18s ease; z-index:30; }
+@media (max-width:900px) {
+  .uh-layout.sidebar-open .uh-overlay { opacity:1; pointer-events:auto; }
+  .uh-layout.sidebar-closed .uh-overlay { opacity:0; pointer-events:none; }
+}
+@media (min-width:901px) {
+  /* on wide screens keep overlay disabled */
+  .uh-overlay { display:none; }
+}
+
+.uh-game-container { padding:28px; overflow:auto; min-height: calc(100vh - 72px); }
+.uh-game-screen { width:520px; max-width:calc(100% - 56px); margin:0; align-self:flex-start; background:var(--content-bg); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); border:1px solid var(--border); padding:16px; position:relative; }
+
+.uh-lives { position:absolute; top:12px; right:14px; display:flex; align-items:center; gap:8px; }
+.uh-hearts { display:flex; gap:6px; }
+.uh-heart { color:var(--color-error, #dc3545); opacity:1; transition:opacity .2s ease; }
+.uh-heart.lost { opacity:.25; }
+.uh-lives-count { background:white; padding:4px 8px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700; }
+
+.uh-switch { display:inline-block; position:relative; width:64px; height:28px; background:var(--border); border-radius:20px; }
+.uh-switch input { display:none; }
+.uh-slider { position:absolute; left:4px; top:4px; width:24px; height:20px; background:white; border-radius:12px; transition:transform .25s ease; }
+.uh-switch input:checked + .uh-slider { transform:translateX(36px); }
+
+/* small utilities */
+.uh-card { padding:16px; border-radius:8px; background:var(--content-bg); border:1px solid var(--border); }
+
+/* responsive */
+@media (max-width:800px) { .uh-sidebar { display:none; } .uh-game-screen { margin:18px; } }

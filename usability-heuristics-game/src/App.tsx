@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Sidebar from './components/Sidebar'
+import TopBar from './components/TopBar'
+import Home from './pages/Home'
+import Level from './pages/Level'
+import './styles/game.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+/**
+ * App: top-level application shell.
+ * This file only composes high-level layout and imports shared styles.
+ * Level-specific interfaces and game logic will live under `src/features/*` later.
+ */
+const App: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className={`uh-layout ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+        <Sidebar />
+        <div className="uh-main">
+          <TopBar onToggleSidebar={() => setSidebarOpen((s) => !s)} />
+          <div className="uh-game-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/level/:id" element={<Level />} />
+            </Routes>
+          </div>
+        </div>
+
+        {/* overlay only active on narrow screens; clicking closes sidebar */}
+        <div className="uh-overlay" onClick={() => setSidebarOpen(false)} aria-hidden />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </BrowserRouter>
   )
 }
 
