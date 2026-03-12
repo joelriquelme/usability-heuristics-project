@@ -1,0 +1,75 @@
+.level-page {
+  margin: 0 auto;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+:root {
+  /* Ajusta aquí el ancho máximo de los niveles (ej: 1200px) */
+  --level-max-width: 1080px;
+}
+
+.level-page__content {
+  width: 100%;
+  max-width: var(--level-max-width);
+  display: grid;
+  gap: 20px;
+}
+
+.level-page__placeholder {
+  width: 100%;
+}
+
+.level-title {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  margin-bottom: 12px;
+}
+
+.level-title__eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.level-title__heading {
+  margin: 0;
+  color: #0f172a;
+}
+
+.level-title__description {
+  margin: 10px 0 0;
+  max-width: 72ch;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/*
+  Override the global `.uh-game-screen` width when it's used as the
+  page-level container. The application global stylesheet sets
+  `.uh-game-screen { width: 520px; }` which limits the available
+  width; this rule lets `--level-max-width` control the size.
+
+  To change the level width, edit `--level-max-width` above.
+*/
+.uh-game-screen.level-page {
+  width: auto !important;
+  max-width: var(--level-max-width);
+  align-self: center;
+}
+
+/* center the game-screen container within its parent horizontally */
+.uh-game-screen.level-page {
+  margin: 0 auto;
+}
