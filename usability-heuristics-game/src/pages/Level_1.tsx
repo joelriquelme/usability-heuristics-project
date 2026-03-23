@@ -94,14 +94,14 @@ const Level_1: React.FC = () => {
             key={it.id}
             className="level-1__item"
           >
-            <div>
+            <div data-eval="show">
               <div className="level-1__item-name">{it.name}</div>
               <div className="level-1__item-price">
                 Precio unitario: {currencyFormatter.format(it.price)}
               </div>
             </div>
 
-            <div className="level-1__controls">
+            <div data-eval="show" className="level-1__controls">
               <button className="level-1__button" onClick={() => decrease(it.id)} aria-label={`disminuir-${it.id}`}>–</button>
               <div className="level-1__quantity" aria-live="polite">
                 <span className="level-1__quantity-icon" aria-hidden="true">◌</span>
@@ -113,12 +113,12 @@ const Level_1: React.FC = () => {
       </div>
 
       <div className="level-1__summary">
-        <div>
+        <div data-eval="show">
           <div className="level-1__summary-label">Total (procesado por el sistema):</div>
           <div className="level-1__summary-total">{currencyFormatter.format(total)}</div>
         </div>
 
-        <div>
+        <div data-eval="show">
           <button className="level-1__pay-button" onClick={handlePay}>Pagar ahora</button>
         </div>
       </div>

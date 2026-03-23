@@ -33,6 +33,20 @@
   margin-bottom: 12px;
 }
 
+/* Variant used when the title should be narrower and have a light blue background */
+.level-title.uh-level-tittle {
+  max-width: 1080px;
+  width: auto;
+  margin: 0 auto 16px;
+  background: #ceeaff; /* light celeste */
+  border-color: #99dfff;
+  box-shadow: 0 8px 20px rgba(6, 40, 71, 0.06);
+}
+
+.level-title.uh-level-tittle .level-title__heading {
+  color: #052a4d;
+}
+
 .level-title__eyebrow {
   display: inline-block;
   margin-bottom: 8px;
@@ -72,4 +86,49 @@
 /* center the game-screen container within its parent horizontally */
 .uh-game-screen.level-page {
   margin: 0 auto;
+}
+
+/* Header containing title and controls */
+.level-header {
+  max-width: var(--level-max-width);
+  margin: 0 auto 16px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.level-header__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.level-header__label {
+  font-size: 14px;
+  color: #334155;
+  font-weight: 600;
+}
+
+/* Blue / celeste evaluative switch */
+.uh-switch.uh-eval-switch .uh-slider {
+  background: #e6f6ff;
+}
+.uh-switch.uh-eval-switch input:checked + .uh-slider {
+  background: #2bb0ff;
+}
+
+/* Evaluative mode: by default do NOT highlight elements. Only elements explicitly marked
+   with `data-eval="show"` will get the red bounding box. Use `data-eval="hide"` to
+   explicitly suppress any highlighting on elements that might otherwise be targeted. */
+.evaluative-mode [data-eval="show"] {
+  outline: 4px solid rgb(252, 49, 39);
+  outline-offset: 6px; /* separate the outline from the element */
+  position: relative;
+}
+
+.evaluative-mode [data-eval="hide"] {
+  box-shadow: none !important;
+  outline: none !important;
 }
