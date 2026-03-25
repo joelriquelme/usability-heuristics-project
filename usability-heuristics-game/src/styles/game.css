@@ -108,3 +108,124 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
 
 /* responsive */
 @media (max-width:800px) { .uh-sidebar { display:none; } .uh-game-screen { margin:18px; } }
+
+.toggle-mode {
+  background-color: #ceeaff; /* Light cyan background */
+  padding: 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle-mode__label {
+  font-size: 16px; /* Slightly larger text */
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* QuestionBox component styles */
+.question-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question-box__question {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.question-box__options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.question-box__option {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.question-box__option:hover {
+  background-color: #f0f0f0;
+}
+
+.question-box__option.selected {
+  background-color: #d1e7dd;
+  border-color: #0f5132;
+  color: #0f5132;
+}
+
+.evaluative-highlight {
+  position: relative;
+  cursor: pointer;
+}
+
+.evaluative-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.question-box-overlay {
+  position: fixed;
+  inset: 0; /* Cubre toda la ventana sin importar nada */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* Un poco más oscuro ayuda al contraste */
+  
+  /* Blur con soporte para Safari */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  z-index: 99999; /* Un número muy alto para que nada lo tape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Importante: evitar que el click en el fondo se "coma" el scroll si no quieres */
+  pointer-events: auto;
+}
+
+.question-box-container {
+  background: var(--content-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it appears above the overlay */
+  position: relative;
+}
+
+.question-box-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+body.modal-open {
+  height: 100vh;
+  overflow: hidden;
+  /* Evita saltos visuales si desaparece la barra de scroll */
+  padding-right: var(--scrollbar-width, 0px); 
+}

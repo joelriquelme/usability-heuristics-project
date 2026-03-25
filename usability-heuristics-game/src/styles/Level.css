@@ -95,8 +95,9 @@
   padding: 0 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .level-header__controls {
@@ -119,11 +120,23 @@
   background: #2bb0ff;
 }
 
+/* ToggleMode boxed label inside level-title variant */
+.toggle-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.toggle-mode__label {
+  font-size: 14px;
+  color: #052a4d;
+  font-weight: 700;
+}
+
 /* Evaluative mode: by default do NOT highlight elements. Only elements explicitly marked
    with `data-eval="show"` will get the red bounding box. Use `data-eval="hide"` to
    explicitly suppress any highlighting on elements that might otherwise be targeted. */
 .evaluative-mode [data-eval="show"] {
-  outline: 4px solid rgb(252, 49, 39);
+  outline: 4px dashed rgb(253, 76, 67); /* lineas punteadas rojas */
   outline-offset: 6px; /* separate the outline from the element */
   position: relative;
 }

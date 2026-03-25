@@ -113,12 +113,12 @@ const Level_1: React.FC = () => {
       </div>
 
       <div className="level-1__summary">
-        <div data-eval="show">
+        <div data-eval="show" question-id="q1">
           <div className="level-1__summary-label">Total (procesado por el sistema):</div>
           <div className="level-1__summary-total">{currencyFormatter.format(total)}</div>
         </div>
 
-        <div data-eval="show">
+        <div data-eval="show" question-id="q2">
           <button className="level-1__pay-button" onClick={handlePay}>Pagar ahora</button>
         </div>
       </div>

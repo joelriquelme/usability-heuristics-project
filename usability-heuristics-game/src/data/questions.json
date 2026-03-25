@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is the capital of France?",
+      "options": [
+        { "text": "Berlin", "isCorrect": false },
+        { "text": "Madrid", "isCorrect": false },
+        { "text": "Paris", "isCorrect": true },
+        { "text": "Rome", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "What is 2 + 2?",
+      "options": [
+        { "text": "3", "isCorrect": false },
+        { "text": "4", "isCorrect": true },
+        { "text": "5", "isCorrect": false },
+        { "text": "6", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Which planet is known as the Red Planet?",
+      "options": [
+        { "text": "Earth", "isCorrect": false },
+        { "text": "Mars", "isCorrect": true },
+        { "text": "Jupiter", "isCorrect": false },
+        { "text": "Venus", "isCorrect": false }
+      ]
+    }
+  ]
+}
