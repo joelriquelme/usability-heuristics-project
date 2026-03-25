@@ -145,3 +145,7 @@
   box-shadow: none !important;
   outline: none !important;
 }
+
+.evaluative-mode [data-eval="show"].correct-answer {
+  outline-color: #00D100; /* Resaltar respuestas correctas en verde */
+}

@@ -116,6 +116,9 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  margin-bottom: 12px;
+  border: 1px solid #99dfff;
 }
 
 .toggle-mode__label {
@@ -166,6 +169,23 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   color: #0f5132;
 }
 
+/* Feedback styles for QuestionBox */
+.question-box__feedback {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.feedback-correct {
+  color: green;
+}
+
+.feedback-incorrect {
+  color: red;
+}
+
+/* Evaluative highlight */
 .evaluative-highlight {
   position: relative;
   cursor: pointer;

@@ -94,14 +94,14 @@ const Level_1: React.FC = () => {
             key={it.id}
             className="level-1__item"
           >
-            <div data-eval="show">
+            <div>
               <div className="level-1__item-name">{it.name}</div>
               <div className="level-1__item-price">
                 Precio unitario: {currencyFormatter.format(it.price)}
               </div>
             </div>
 
-            <div data-eval="show" className="level-1__controls">
+            <div className="level-1__controls">
               <button className="level-1__button" onClick={() => decrease(it.id)} aria-label={`disminuir-${it.id}`}>–</button>
               <div className="level-1__quantity" aria-live="polite">
                 <span className="level-1__quantity-icon" aria-hidden="true">◌</span>
