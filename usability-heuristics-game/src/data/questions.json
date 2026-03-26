@@ -1,33 +1,43 @@
 {
   "questions": [
     {
-      "id": "q1",
-      "question": "What is the capital of France?",
+      "id": "level-1-pay-button",
+      "question": "¿El botón de pagar cumple con el principio de usabilidad 'visibilidad del estado'?",
       "options": [
-        { "text": "Berlin", "isCorrect": false },
-        { "text": "Madrid", "isCorrect": false },
-        { "text": "Paris", "isCorrect": true },
-        { "text": "Rome", "isCorrect": false }
+        { "text": "No, porque no da feedback al ser presionado y puede ser presionado muchas veces, causando errores.", "isCorrect": true },
+        { "text": "Sí, porque siempre muestra el estado actual del pago.", "isCorrect": false },
+        { "text": "No, porque no tiene un diseño atractivo.", "isCorrect": false },
+        { "text": "Sí, porque permite realizar múltiples pagos rápidamente.", "isCorrect": false }
       ]
     },
     {
-      "id": "q2",
-      "question": "What is 2 + 2?",
+      "id": "level-1-total-display",
+      "question": "¿El total de los productos cumple con el principio de usabilidad 'visibilidad del estado'?",
       "options": [
-        { "text": "3", "isCorrect": false },
-        { "text": "4", "isCorrect": true },
-        { "text": "5", "isCorrect": false },
-        { "text": "6", "isCorrect": false }
+        { "text": "No, porque no muestra el total correctamente.", "isCorrect": false },
+        { "text": "Sí, porque muestra claramente el total de los productos que se van a comprar.", "isCorrect": true },
+        { "text": "No, porque no es visible en la interfaz.", "isCorrect": false },
+        { "text": "Sí, porque el diseño es atractivo.", "isCorrect": false }
       ]
     },
     {
-      "id": "q3",
-      "question": "Which planet is known as the Red Planet?",
+      "id": "level-1-quantity-input",
+      "question": "¿El modulo para agregar o quitar productos del carro cumple con el principio de usabilidad 'visibilidad del estado'?",
       "options": [
-        { "text": "Earth", "isCorrect": false },
-        { "text": "Mars", "isCorrect": true },
-        { "text": "Jupiter", "isCorrect": false },
-        { "text": "Venus", "isCorrect": false }
+        { "text": "No, porque no muestra la cantidad de cada producto que se está comprando.", "isCorrect": true },
+        { "text": "Sí, porque permite ajustar la cantidad de productos.", "isCorrect": false },
+        { "text": "No, porque no tiene un diseño atractivo.", "isCorrect": false },
+        { "text": "Sí, porque son fáciles de usar.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-1-price-display",
+      "question": "¿El precio de cada producto cumple con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "No, porque no muestra el precio correctamente.", "isCorrect": false },
+        { "text": "Sí, porque muestra claramente el precio de cada producto.", "isCorrect": true },
+        { "text": "No, porque no es visible en la interfaz.", "isCorrect": false },
+        { "text": "Sí, porque el diseño es atractivo.", "isCorrect": false }
       ]
     }
   ]

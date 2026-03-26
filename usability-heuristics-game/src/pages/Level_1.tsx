@@ -89,19 +89,19 @@ const Level_1: React.FC = () => {
       </div>
 
       <div className="level-1__items">
-        {initialItems.map((it) => (
+        {initialItems.map((it, index) => (
           <div
             key={it.id}
             className="level-1__item"
           >
-            <div>
+            <div data-eval={index === 0 ? "show" : undefined} question-id={index === 0 ? "level-1-price-display" : undefined}>
               <div className="level-1__item-name">{it.name}</div>
               <div className="level-1__item-price">
                 Precio unitario: {currencyFormatter.format(it.price)}
               </div>
             </div>
 
-            <div className="level-1__controls">
+            <div className="level-1__controls"  data-eval={index === 0 ? "show" : undefined} question-id={index === 0 ? "level-1-quantity-input" : undefined}>
               <button className="level-1__button" onClick={() => decrease(it.id)} aria-label={`disminuir-${it.id}`}>–</button>
               <div className="level-1__quantity" aria-live="polite">
                 <span className="level-1__quantity-icon" aria-hidden="true">◌</span>
@@ -113,12 +113,12 @@ const Level_1: React.FC = () => {
       </div>
 
       <div className="level-1__summary">
-        <div data-eval="show" question-id="q1">
+        <div data-eval="show" question-id="level-1-total-display">
           <div className="level-1__summary-label">Total (procesado por el sistema):</div>
           <div className="level-1__summary-total">{currencyFormatter.format(total)}</div>
         </div>
 
-        <div data-eval="show" question-id="q2">
+        <div data-eval="show" question-id="level-1-pay-button">
           <button className="level-1__pay-button" onClick={handlePay}>Pagar ahora</button>
         </div>
       </div>

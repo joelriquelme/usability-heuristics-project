@@ -8,17 +8,19 @@ import { getLevelComponent } from './levels';
 import QuestionBox from '../components/QuestionBox';
 import { createPortal } from 'react-dom';
 import questionsData from '../data/questions.json';
+import LevelCorrect from './Level_1_correct'; // Importar el nivel corregido
 
 const Level: React.FC = () => {
   const { id } = useParams();
   const [evaluative, setEvaluative] = useState(false);
   const [questionBoxData, setQuestionBoxData] = useState({
     question: '',
-    options: [],
+    options: [] as { text: string; isCorrect: boolean }[], // Definir el tipo correcto para las opciones
     visible: false,
     triggeringElement: null as HTMLElement | null, // Track the element that triggered the QuestionBox
   });
   const [allCorrect, setAllCorrect] = useState(false); // Track if all usability issues are resolved
+  const [showCorrectLevel, setShowCorrectLevel] = useState(false); // Nuevo estado para mostrar el nivel corregido
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-eval="show"]');
@@ -63,25 +65,15 @@ const Level: React.FC = () => {
     };
   }, [evaluative]);
 
-  useEffect(() => {
-    const checkAllCorrect = () => {
-      const elements = document.querySelectorAll('[data-eval="show"]');
-      const allHaveCorrectClass = Array.from(elements).every((element) =>
-        element.classList.contains('correct-answer')
-      );
-      setAllCorrect(allHaveCorrectClass && elements.length > 0); // Ensure there are elements and all are correct
-    };
-
-    const observer = new MutationObserver(checkAllCorrect);
+  const checkAllCorrect = () => {
     const elements = document.querySelectorAll('[data-eval="show"]');
-    elements.forEach((element) => observer.observe(element, { attributes: true, attributeFilter: ['class'] }));
+    const allHaveCorrectClass = Array.from(elements).every((element) =>
+      element.classList.contains('correct-answer')
+    );
+    setAllCorrect(allHaveCorrectClass && elements.length > 0);
+    console.log('All correct:', allHaveCorrectClass && elements.length > 0); // Ensure there are elements and all are correct
+  };
 
-    checkAllCorrect(); // Initial check
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     if (questionBoxData.visible) {
@@ -101,6 +93,7 @@ const Level: React.FC = () => {
   const handleCorrectAnswer = () => {
     if (questionBoxData.triggeringElement) {
       questionBoxData.triggeringElement.classList.add('correct-answer');
+      checkAllCorrect(); // Check if all issues are resolved after marking this one as correct
     }
   };
 
@@ -122,12 +115,27 @@ const Level: React.FC = () => {
         <div className="level-header__controls">
           <ToggleMode className="uh-eval-switch" checked={evaluative} onChange={setEvaluative} />
         </div>
+        {
+          allCorrect && (
+            <button onClick={() => setShowCorrectLevel((prev) => !prev)}>
+              {showCorrectLevel ? 'Mostrar nivel original' : 'Mostrar nivel corregido'}
+            </button>
+          ) 
+        }
       </div>
       <div className="uh-game-screen level-page">
         <div className="level-page__content">
           {
             (() => {
-              const LevelComponent = getLevelComponent(allCorrect ? `${id}_correct` : id); // Switch to corrected level if all issues are resolved
+              if (showCorrectLevel) {
+                return (
+                  <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel corregido...</div>}>
+                    <LevelCorrect />
+                  </Suspense>
+                );
+              }
+
+              const LevelComponent = getLevelComponent(id);
               if (LevelComponent) {
                 return (
                   <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel...</div>}>

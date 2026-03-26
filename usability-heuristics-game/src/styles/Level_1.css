@@ -221,7 +221,7 @@
 }
 
 .level-1__button:hover,
-.level-1__pay-button:hover {
+.level-1__pay-button:not(.loading):not(.disabled):hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
 }
@@ -240,6 +240,51 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.button-content {
+  display: flex;         /* Alinea texto y spinner en línea */
+  align-items: center;   /* Centra verticalmente */
+  justify-content: center; 
+  gap: 10px;            /* Crea el espacio horizontal entre texto y spinner */
+  width: 100%;
+}
+
+.level-1__pay-button.loading {
+  cursor: progress;
+  opacity: 0.8;
+}
+
+.level-1__pay-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.level-1__button:disabled {
+  opacity: 0.8; /* Reducir opacidad */
+  cursor: not-allowed; /* Cambiar cursor a no clickeable */
+  pointer-events: none; /* Deshabilitar interacciones */
+}
+
+.level-1__button:disabled:hover {
+  background-color: inherit; /* Eliminar efecto hover */
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  flex-shrink: 0; /* Importante: evita que se deforme si el texto es largo */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 640px) {
