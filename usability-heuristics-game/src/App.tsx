@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
-import Home from './pages/Home'
+import Tutorial from './pages/Tutorial'
 import Level from './pages/Level'
 import './styles/game.css'
 
@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <TopBar onToggleSidebar={() => setSidebarOpen((s) => !s)} />
           <div className="uh-game-container">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Tutorial />} />
               <Route path="/level/:id" element={<Level />} />
             </Routes>
           </div>

@@ -89,7 +89,19 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   .uh-overlay { display:none; }
 }
 
-.uh-game-container { padding:28px; overflow:auto; min-height: calc(100vh - 72px); }
+.uh-game-container { 
+  padding:20px;
+  padding-bottom: 5px; 
+  overflow:auto; 
+  min-height: 
+  calc(100vh - 72px); 
+  background-image: url('../assets/background2.png');
+  background-size: 65rem;
+  background-repeat: repeat;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Add a white overlay with low opacity */
+  background-blend-mode: lighten; /* Blend the background image with the white overlay */
+}
 .uh-game-screen { width:520px; max-width:calc(100% - 56px); margin:0; align-self:flex-start; background:var(--content-bg); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); border:1px solid var(--border); padding:16px; position:relative; }
 
 .uh-lives { position:absolute; top:12px; right:14px; display:flex; align-items:center; gap:8px; }

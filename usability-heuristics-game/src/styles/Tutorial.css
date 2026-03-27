@@ -1,0 +1,88 @@
+.tutorial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.tutorial-page-content {
+  width: 100%;
+  max-width: var(--level-max-width);
+  display: grid;
+  gap: 20px;
+}
+
+.tutorial-content {
+  text-align: center;
+}
+
+.tutorial-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
+  width: fit-content;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.tutorial-image {
+  max-width: 75vh;
+  max-height: 55vh;
+  height: auto;
+  margin: 10px;
+}
+
+.tutorial-text {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  margin-inline: 3em;
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* Change font to Arial */
+}
+
+.tutorial-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav-arrow {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav-arrow:hover {
+  background-color: #0056b3;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #007bff;
+}
+
+.level-1__button {
+  margin: 0 10px;
+}

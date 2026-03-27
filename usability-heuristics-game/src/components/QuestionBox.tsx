@@ -24,10 +24,10 @@ const QuestionBox: React.FC<QuestionBoxProps> = ({ question, options, onAnswer, 
     onAnswer(isCorrect);
     if (isCorrect) {
       onCorrectAnswer(); // Notify parent of correct answer
-      setFeedbackMessage('Correct!');
+      setFeedbackMessage('¡Correcto!');
       setFeedbackClass('feedback-correct');
     } else {
-      setFeedbackMessage('Incorrect!');
+      setFeedbackMessage('¡Incorrecto!');
       setFeedbackClass('feedback-incorrect');
     }
   };

@@ -1,0 +1,46 @@
+[
+  {
+    "image": "./src/assets/tutorial/tutorial-red-panda-start.jpg",
+    "text": "Bienvenid@ al tutorial del juego de heurísticas de usabilidad. Aquí aprenderás los conceptos básicos y cómo navegar a través de la experiencia."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-lateral-bar.jpg",
+    "text": "Para navegar entre los niveles, utiliza la barra lateral. Haz clic en el ícono de menú para abrirla y selecciona el nivel que deseas jugar."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-elements.jpg",
+    "text": "En cada nivel encontrarás tres elementos clave: el título del nivel, el botón para cambiar el modo de juego y la interfaz interactiva."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-title-button.jpg",
+    "text": "El título indica el principio de usabilidad que se evaluará y ofrece una breve descripción. El funcionamiento del botón de modo de juego se explicará más adelante."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-interface.jpg",
+    "text": "Tras leer el título, puedes interactuar libremente con la interfaz para familiarizarte con ella. Presta especial atención a los elementos que podrían estar relacionados con la heurística del nivel."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-button.jpg",
+    "text": "¿Recuerdas el botón de modo de juego? Este te permite alternar entre el modo exploratorio y el evaluativo. Cuando te sientas listo, cambia al modo evaluativo para comenzar el desafío."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-eval-mode.jpg",
+    "text": "En el modo evaluativo, verás elementos destacados en la interfaz. Al hacer clic en cualquiera de ellos, se abrirá un cuestionario sobre ese componente y el principio de usabilidad aplicado."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-question.jpg",
+    "text": "Lee atentamente cada pregunta y sus opciones de respuesta; luego, selecciona la opción que consideres correcta."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-interface-complete.jpg",
+    "text": "A medida que respondas correctamente, los elementos identificados se marcarán con un borde verde dentro de la interfaz."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-interface-correct.jpg",
+    "text": "Al completar todas las preguntas, verás una versión alternativa de la interfaz con los errores corregidos.<br>Interactúa con ella para notar la diferencia y las mejoras respectivas.<br>Cuando estés listo, pasa al siguiente nivel desde la barra lateral."
+  },
+  {
+    "image": "./src/assets/tutorial/tutorial-red-panda-end.jpg",
+    "text": "¡Felicidades por completar el tutorial! Ahora estás listo para enfrentar los desafíos de los niveles y aplicar tus conocimientos sobre heurísticas de usabilidad. ¡Buena suerte!<br>En caso de encontrar cualquier bug o error, no dudes en reportarlo directamente a mi telegram @rebith_j0wel."
+  }
+]
