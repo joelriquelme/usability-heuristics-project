@@ -2,5 +2,9 @@
   "1": {
     "title": "¿Pagaste o no pagaste?",
     "description": "Explora cómo la falta de visibilidad del estado puede causar acciones indeseadas o confusiones."
+  },
+  "2": {
+    "title": "¿Ya se descargó?",
+    "description": "Aquí experimentarás la incertidumbre de no recibir retroalimentación sobre el progreso de una acción."
   }
 }

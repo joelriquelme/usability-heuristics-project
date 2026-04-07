@@ -39,6 +39,16 @@
         { "text": "No, porque no es visible en la interfaz.", "isCorrect": false },
         { "text": "Sí, porque el diseño es atractivo.", "isCorrect": false }
       ]
+    },
+    {
+      "id": "level-2-file-checkbox",
+      "question": "¿Las casillas de selección de los archivos cumplen con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "No, porque no muestran claramente si un archivo está seleccionado o no.", "isCorrect": true },
+        { "text": "Sí, porque permiten seleccionar múltiples archivos a la vez.", "isCorrect": false },
+        { "text": "No, porque no tienen un diseño atractivo.", "isCorrect": false },
+        { "text": "Sí, porque son fáciles de usar.", "isCorrect": false }
+      ]
     }
   ]
 }
