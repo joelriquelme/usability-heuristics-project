@@ -73,12 +73,14 @@ const Level2: React.FC = () => {
           <ul>
             {files.map((file, index) => (
               <li key={index} className="file-item">
+                <div data-eval={index === 0 ? "show" : undefined} question-id={index === 0 ? "level-2-file-checkbox" : undefined}>
                 <input
                   type="checkbox"
                   className="file-checkbox"
                   checked={!!selectedFiles[file.name]}
                   onChange={() => toggleFileSelection(file.name)}
                 />
+                </div>
                 <span className="file-name">{file.name}</span>
                 <span className="file-size">{file.size}</span>
                 <div className="file-actions">
