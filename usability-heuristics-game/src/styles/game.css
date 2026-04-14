@@ -113,7 +113,7 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
 .uh-switch { display:inline-block; position:relative; width:64px; height:28px; background:var(--border); border-radius:20px; }
 .uh-switch input { display:none; }
 .uh-slider { position:absolute; left:4px; top:4px; width:24px; height:20px; background:white; border-radius:12px; transition:transform .25s ease; }
-.uh-switch input:checked + .uh-slider { transform:translateX(36px); }
+.uh-switch input:checked + .uh-slider { transform:translateX(32px); }
 
 /* small utilities */
 .uh-card { padding:16px; border-radius:8px; background:var(--content-bg); border:1px solid var(--border); }
@@ -253,6 +253,141 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   padding: 5px 10px;
   cursor: pointer;
   font-size: 14px;
+}
+
+/* Styles for AlertModal */
+.alert-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.alert-modal-container {
+  position: relative; /* Ensure modal content is above confetti */
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 1; /* Ensure modal content is above confetti */
+}
+
+.alert-modal-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+.alert-modal-message {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.alert-modal-close {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.alert-modal-close:hover {
+  background-color: #0056b3;
+}
+
+/* Styles for the close icon button */
+.alert-modal-close-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.alert-modal-close-icon:hover {
+  color: #000000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Confetti animation for AlertModal */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100%) rotateZ(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--confetti-color, #ffcc00);
+  animation: confetti-fall 3s linear infinite;
+  z-index: 1001;
+}
+
+/* Variations for confetti */
+.confetti:nth-child(odd) {
+  --confetti-color: #a3d8f4; /* Dodger blue with opacity */
+}
+.confetti:nth-child(even) {
+  --confetti-color: #f9d5bb; /* Darker blue with opacity */
+}
+.confetti:nth-child(3n) {
+  --confetti-color: #f7f48b;
+}
+.confetti:nth-child(4n) {
+  --confetti-color: #d4a5a5;
+}
+.confetti:nth-child(5n) {
+  --confetti-color: #c3aed6;
+}
+
+/* Container for confetti */
+.alert-modal-confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1; /* Move confetti below the modal content */
 }
 
 body.modal-open {

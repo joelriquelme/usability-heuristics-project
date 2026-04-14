@@ -9,6 +9,7 @@ import QuestionBox from '../components/QuestionBox';
 import { createPortal } from 'react-dom';
 import questionsData from '../data/questions.json';
 import LevelCorrect from './Level_1_correct'; // Importar el nivel corregido
+import AlertModal from '../components/AlertModal';
 
 const Level: React.FC = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const Level: React.FC = () => {
   });
   const [allCorrect, setAllCorrect] = useState(false); // Track if all usability issues are resolved
   const [showCorrectLevel, setShowCorrectLevel] = useState(false); // Nuevo estado para mostrar el nivel corregido
+  const [alertModalVisible, setAlertModalVisible] = useState(true); // Estado para controlar la visibilidad del AlertModal
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-eval="show"]');
@@ -114,14 +116,17 @@ const Level: React.FC = () => {
         }
         <div className="level-header__controls">
           <ToggleMode className="uh-eval-switch" checked={evaluative} onChange={setEvaluative} />
-        </div>
-        {
+          {
           allCorrect && (
-            <button onClick={() => setShowCorrectLevel((prev) => !prev)}>
-              {showCorrectLevel ? 'Mostrar nivel original' : 'Mostrar nivel corregido'}
-            </button>
+            <ToggleMode
+              className="uh-eval-switch"
+              checked={showCorrectLevel}
+              onChange={setShowCorrectLevel}
+              text={{ left: 'Interfaz Original', right: 'Interfaz Corregida' }}
+            />
           ) 
         }
+        </div>
       </div>
       <div className="uh-game-screen level-page">
         <div className="level-page__content">
@@ -154,6 +159,13 @@ const Level: React.FC = () => {
           }
         </div>
       </div>
+      {allCorrect && alertModalVisible && (
+        <AlertModal
+          title="¡Felicidades!"
+          message="Has respondido correctamente todas las preguntas. Ahora puedes explorar el interfaz corregida con los problemas de usabilidad resueltos."
+          onClose={() => setAlertModalVisible(false)}
+        />
+      )}
       {questionBoxData.visible && createPortal(
         <div className="question-box-overlay">
           <div className="question-box-container">
