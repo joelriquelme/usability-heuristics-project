@@ -41,13 +41,43 @@
       ]
     },
     {
+      "id": "level-2-bulk-download",
+      "question": "¿El botón para descargar archivos seleccionados cumple con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque siempre muestra el estado actual de las descargas.", "isCorrect": false },
+        { "text": "No, porque no tiene un diseño atractivo.", "isCorrect": false },
+        { "text": "Sí, porque permite descargar múltiples archivos rápidamente.", "isCorrect": false },
+        { "text": "No, porque no da feedback al ser presionado y puede ser presionado muchas veces, causando errores.", "isCorrect": true }
+      ]
+    },
+    {
       "id": "level-2-file-checkbox",
       "question": "¿Las casillas de selección de los archivos cumplen con el principio de usabilidad 'visibilidad del estado'?",
       "options": [
-        { "text": "No, porque no muestran claramente si un archivo está seleccionado o no.", "isCorrect": true },
+        { "text": "Sí, porque muestran claramente si un archivo está seleccionado o no.", "isCorrect": true },
         { "text": "Sí, porque permiten seleccionar múltiples archivos a la vez.", "isCorrect": false },
         { "text": "No, porque no tienen un diseño atractivo.", "isCorrect": false },
-        { "text": "Sí, porque son fáciles de usar.", "isCorrect": false }
+        { "text": "Sí, porque son fáciles de usar y tienen un diseño atractivo.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-2-file-name",
+      "question": "¿Los nombres de los archivos cumplen con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque muestran claramente el nombre de cada archivo.", "isCorrect": true },
+        { "text": "Sí, porque no son visibles en la interfaz.", "isCorrect": false },
+        { "text": "No, porque no tienen un diseño responsive.", "isCorrect": false },
+        { "text": "Sí, porque muestran en color negro el nombre y hace contraste.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-2-file-download",
+      "question": "¿El botón de descarga cumple con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque da feedback claro sobre la descarga", "isCorrect": false },
+        { "text": "No, porque no es atractivo a nivel diseño", "isCorrect": false },
+        { "text": "Sí, porque no entrega información sobre el estado de la descarga", "isCorrect": true },
+        { "text": "Sí, porque el icono representa una descarga", "isCorrect": false }
       ]
     }
   ]

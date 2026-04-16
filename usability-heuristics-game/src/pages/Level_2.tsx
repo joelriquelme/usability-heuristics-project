@@ -9,12 +9,12 @@ type DownloadNotification = {
 
 const Level2: React.FC = () => {
   const files = [
-    { name: '7b069ff1c53bee585f417433f697c2b8.pdf', size: '336.3 KB', sizeInKB: 336.3 },
-    { name: 'Bases Cachipun 2026.pdf', size: '255.1 KB', sizeInKB: 255.1 },
-    { name: 'Bases Cara de Caca 2026.pdf', size: '139.3 KB', sizeInKB: 139.3 },
-    { name: 'Bases Tenis de Mesa 2026.pdf', size: '249.1 KB', sizeInKB: 249.1 },
-    { name: 'fdd73255f4af.pdf', size: '336.4 KB', sizeInKB: 336.4 },
-    { name: 'llave1.txt', size: '10.3 KB', sizeInKB: 10.3 },
+    { name: 'bolsa.c', size: '972 B', sizeInKB: 0.972 },
+    { name: 'Programa del curso CC4401 Semestre Primavera 2026.pdf', size: '2.3 MB', sizeInKB: 2300 },
+    { name: 'Tarea 1 PSS.pdf', size: '1.1 MB', sizeInKB: 255.1 },
+    { name: 'important-photo.jpg', size: '139.3 KB', sizeInKB: 139.3 },
+    { name: 'Auxiliar 01.pdf', size: '580 KB', sizeInKB: 580 },
+    { name: 'datos.bin', size: '55.3 GB', sizeInKB: 55.3 * 1024 * 1024 },
     { name: 'memoryDumpCTF2.txt', size: '2.7 KB', sizeInKB: 2.7 },
   ];
 
@@ -22,7 +22,11 @@ const Level2: React.FC = () => {
   const [selectedFiles, setSelectedFiles] = useState<Record<string, boolean>>({});
 
   const handleDownload = (fileName: string, fileSize: number) => {
-    const downloadTime = Math.min(Math.max(fileSize / 100, 1), 5) * 1000; // Simulate download time (1-5 seconds)
+    if (fileName === 'bolsa.c') {
+      return; // No hacer nada si el archivo es 'bolsa.c'
+    }
+
+    const downloadTime = Math.min(Math.max(fileSize / 100, 500), 5000); // Simulate download time based on file size (between 0.5s and 5s)
     const newId = Date.now() + Math.random();
 
     setTimeout(() => {
@@ -56,9 +60,13 @@ const Level2: React.FC = () => {
     <div className="level-2">
       <header className="header">
         <h1 className="header-title">DCCfiles - Sistema de Gestión de Descargas</h1>
-        <button className="header-download-button" onClick={handleBulkDownload}>
+        <div data-eval="show" question-id="level-2-bulk-download">
+        <button 
+          className="header-download-button" 
+          onClick={handleBulkDownload}>
           Descargar seleccionados <FaDownload />
         </button>
+        </div>
       </header>
       <div className="level-2__notifications-stack">
         {notifications.map((n) => (
@@ -81,9 +89,12 @@ const Level2: React.FC = () => {
                   onChange={() => toggleFileSelection(file.name)}
                 />
                 </div>
-                <span className="file-name">{file.name}</span>
+                <span data-eval={index === 1 ? "show" : undefined} question-id={index === 1 ? "level-2-file-name" : undefined} className="file-name">{file.name}</span>
                 <span className="file-size">{file.size}</span>
-                <div className="file-actions">
+                <div 
+                  data-eval={index === 0 ? "show" : undefined} 
+                  question-id={index === 0 ? "level-2-file-download" : undefined}
+                  className="file-actions">
                   <button
                     className="action-button download"
                     onClick={() => handleDownload(file.name, file.sizeInKB)}
