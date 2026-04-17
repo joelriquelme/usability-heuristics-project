@@ -8,7 +8,7 @@ import { getLevelComponent } from './levels';
 import QuestionBox from '../components/QuestionBox';
 import { createPortal } from 'react-dom';
 import questionsData from '../data/questions.json';
-import LevelCorrect from './Level_1_correct'; // Importar el nivel corregido
+// Level corrected components will be loaded dynamically per-level
 import AlertModal from '../components/AlertModal';
 
 const Level: React.FC = () => {
@@ -133,10 +133,17 @@ const Level: React.FC = () => {
           {
             (() => {
               if (showCorrectLevel) {
+                const correctedId = id ? `${id}_correct` : undefined;
+                const CorrectedComponent = getLevelComponent(correctedId);
+                if (CorrectedComponent) {
+                  return (
+                    <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel corregido...</div>}>
+                      <CorrectedComponent />
+                    </Suspense>
+                  );
+                }
                 return (
-                  <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel corregido...</div>}>
-                    <LevelCorrect />
-                  </Suspense>
+                  <div className="uh-card level-page__placeholder">Interfaz corregida no disponible para este nivel.</div>
                 );
               }
 

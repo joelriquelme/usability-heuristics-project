@@ -76,7 +76,7 @@
       "options": [
         { "text": "Sí, porque da feedback claro sobre la descarga", "isCorrect": false },
         { "text": "No, porque no es atractivo a nivel diseño", "isCorrect": false },
-        { "text": "Sí, porque no entrega información sobre el estado de la descarga", "isCorrect": true },
+        { "text": "No, porque no entrega información sobre el estado de la descarga", "isCorrect": true },
         { "text": "Sí, porque el icono representa una descarga", "isCorrect": false }
       ]
     }

@@ -181,6 +181,16 @@
   background-color: #218838;
 }
 
+/* Make download button red when there's an error (e.g., bolsa.c) */
+.action-button.download.error {
+  background-color: #c82333;
+  color: white;
+  box-shadow: none;
+}
+.action-button.download.error:hover {
+  background-color: #a71d2a;
+}
+
 .action-button.share {
   background-color: #17a2b8;
   color: white;
@@ -249,6 +259,11 @@
   color: #28a745;
 }
 
+.level-2__notification-icon-error{
+  font-size: 1.2em;
+  color: #dc3545;
+}
+
 @keyframes fadeInOut {
   0% {
     opacity: 0;
@@ -266,4 +281,55 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+}
+
+/* Success / Error variants for notifications */
+.level-2__notification.success {
+  background-color: #e9ffe9;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.level-2__notification.error {
+  background-color: #ffe9e9;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Circular progress styles */
+.circular-progress {
+  transform: rotate(-90deg);
+}
+.circular-progress .bg {
+  stroke: rgba(0,0,0,0.08);
+}
+.circular-progress .progress {
+  stroke: #ffffff; /* contrast on green button */
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.action-button.download[disabled] {
+  opacity: 0.9;
+  cursor: default;
+}
+
+/* Ensure disabled buttons do not show hover styles or respond to pointer events */
+.action-button[disabled],
+.action-button[disabled]:hover {
+  pointer-events: none;
+  cursor: default;
+  filter: none;
+}
+
+.error-indicator {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #c82333;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 18px;
 }
