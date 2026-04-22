@@ -80,5 +80,46 @@
         { "text": "Sí, porque el icono representa una descarga", "isCorrect": false }
       ]
     }
+    ,
+    {
+      "id": "level-4-delete-icon",
+      "question": "¿El icono (triángulo invertido verde) para eliminar una tarea es intuitivo para los usuarios?",
+      "options": [
+        { "text": "No, porque no corresponde a la metáfora de eliminar y puede confundir al usuario.", "isCorrect": true },
+        { "text": "Sí, porque cualquier símbolo funciona si es consistente.", "isCorrect": false },
+        { "text": "Sí, porque el color verde indica confirmación.", "isCorrect": false },
+        { "text": "No, pero los usuarios aprenderán con el tiempo.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-4-commit-button",
+      "question": "¿El texto 'Commit' es apropiado para un botón que guarda una tarea?",
+      "options": [
+        { "text": "No, es tecnicismo (jerga de desarrollo) y no habla el idioma del usuario.", "isCorrect": true },
+        { "text": "Sí, porque los usuarios entienden términos técnicos.", "isCorrect": false },
+        { "text": "No, pero es mejor que no poner nada.", "isCorrect": false },
+        { "text": "Sí, porque suena profesional.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-4-rollback-button",
+      "question": "¿El botón 'Rollback' comunica claramente su función de deshacer cambios?",
+      "options": [
+        { "text": "No, 'Rollback' es término técnico y no es claro para la mayoría de usuarios.", "isCorrect": true },
+        { "text": "Sí, porque implica volver atrás.", "isCorrect": false },
+        { "text": "Sí, si el usuario conoce procesos de base de datos.", "isCorrect": false },
+        { "text": "No, pero se puede usar sin explicación.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-4-field-names",
+      "question": "¿Los nombres de campo como 'task.title' hacen la interfaz más comprensible para el usuario?",
+      "options": [
+        { "text": "No, muestran cómo se guarda en la base de datos en lugar de hablar el idioma del usuario.", "isCorrect": true },
+        { "text": "Sí, porque es relevante para entender la estructura interna.", "isCorrect": false },
+        { "text": "No, pero son aceptables en aplicaciones avanzadas.", "isCorrect": false },
+        { "text": "Sí, porque ayuda a los desarrolladores a usar la interfaz.", "isCorrect": false }
+      ]
+    }
   ]
 }

@@ -7,4 +7,9 @@
     "title": "¿Ya se descargó?",
     "description": "Aquí experimentarás la incertidumbre de no recibir retroalimentación sobre el progreso de una acción."
   }
+  ,
+  "4": {
+    "title": "¿Qué significa este botón?",
+    "description": "Explora cómo el uso de lenguaje técnico y símbolos poco familiares rompe la coincidencia entre el sistema y el mundo real."
+  }
 }

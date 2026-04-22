@@ -1,0 +1,90 @@
+/* Styles for Level 4 (confusing original) and Level 4 corrected */
+
+.level-4, .level-4-correct {
+  /* Use full available width of the page-level container */
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e6edf3;
+  margin: 0; /* let the parent container handle centering */
+}
+
+.level-4__header, .level-4-correct .level-4__header {
+  margin-bottom: 12px;
+}
+
+.level-4__header h2 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+.level-4__header p { color: #475569; margin: 0; }
+
+.task-creator {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 12px 0 18px 0;
+  justify-content: space-between;
+}
+
+.technical-fields label,
+.friendly-fields label {
+  display: block;
+  font-size: 12px;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.technical-fields input,
+.friendly-fields input {
+  display: block;
+  width: 320px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fbfdff;
+  margin-bottom: 8px;
+}
+
+.technical-fields label { color: #6b7280; font-family: monospace; }
+.technical-fields input { background: #fffaf0; }
+
+.task-actions { display: flex; gap: 8px; align-items: center; }
+.btn { padding: 8px 12px; border-radius: 8px; border: 1px solid #d1d5db; background: #ffffff; cursor: pointer; }
+.btn.primary { background: #2563eb; color: #fff; border-color: #2563eb; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.task-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid #f1f5f9; }
+.task-item { display: block; padding: 12px 0; border-bottom: 1px solid #f8fafc; }
+.task-row { display: flex; justify-content: space-between; align-items: center; }
+.task-main { display: flex; gap: 10px; align-items: center; }
+.task-title { color: #0f172a; }
+
+.task-controls { display: flex; gap: 8px; align-items: center; }
+.delete-button { background: transparent; border: none; cursor: pointer; padding: 4px; border-radius: 6px; color: #ff0000; }
+
+.detail-button { padding: 6px 8px; border-radius: 8px; background: #f1f5f9; border: 1px solid #e2e8f0; cursor: pointer; font-size: 13px; }
+.detail-button:hover { background: #eef2ff; }
+
+.task-desc { margin: 8px 12px 12px 46px; color: #475569; font-size: 14px; background: #fbfdff; padding: 8px 10px; border-radius: 8px; border: 1px solid #eef2f7; }
+
+/* Icon-style detail button */
+.detail-button { padding: 6px; border-radius: 8px; background: transparent; border: 1px solid transparent; }
+.detail-button svg { width: 18px; height: 18px; transition: transform 0.18s ease; }
+.detail-button[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+/* Misleading delete icon (original level): inverted green triangle */
+.level-4 .delete-button span { font-size: 18px; }
+
+/* Friendly delete for corrected level */
+.level-4-correct .delete-button.friendly { font-size: 16px; }
+
+.level-4__footer { margin-top: 14px; color: #6b7280; font-size: 13px; }
+
+/* Evaluative highlights should still work inside level styles */
+.level-4 [data-eval="show"], .level-4-correct [data-eval="show"] { transition: outline-color 0.15s ease; }
