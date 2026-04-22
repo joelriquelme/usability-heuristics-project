@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useMatch } from 'react-router-dom'
+import { useMatch } from 'react-router-dom'
 
 type Props = {
   title: string
@@ -35,9 +35,9 @@ const LevelItem: React.FC<Props> = ({ title, completed, to, onClick }) => {
   return (
     <li className={`uh-level-item ${isActive ? 'active' : ''}`} aria-current={isActive ? 'true' : undefined}>
       {to ? (
-        <Link to={to} onClick={onClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', padding: '6px 4px' }}>
+        <a href={to} onClick={onClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', padding: '6px 4px' }}>
           {content}
-        </Link>
+        </a>
       ) : (
         <button onClick={onClick} style={{ all: 'unset', cursor: 'pointer' }}>
           {content}
