@@ -16,15 +16,18 @@ const Level4Correct: React.FC = () => {
 
   const [lastDeleted, setLastDeleted] = useState<null | { task: Task; index: number }>(null)
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
+  const [title, setTitle] = useState<string>('')
+  const [desc, setDesc] = useState<string>('')
 
   const toggleDone = (id: string) => {
     setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)))
   }
 
   const addTask = () => {
-    const title = prompt('Título de la tarea') || 'Nueva tarea'
-    const newTask: Task = { id: `t${Date.now()}`, title, done: false, desc: '' }
+    const newTask: Task = { id: `t${Date.now()}`, title: title || 'Nueva tarea', done: false, desc: desc || '' }
     setTasks((prev) => [newTask, ...prev])
+    setTitle('')
+    setDesc('')
   }
 
   const handleDelete = (id: string) => {
@@ -64,9 +67,9 @@ const Level4Correct: React.FC = () => {
       <section className="task-creator">
         <div className="friendly-fields">
           <label>Título</label>
-          <input placeholder="P. ej. Comprar pan" />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="P. ej. Comprar pan" />
           <label>Descripción</label>
-          <input placeholder="Opcional" />
+          <input value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Opcional" />
         </div>
         <div className="task-actions">
           <button className="btn primary" onClick={addTask}>Guardar</button>

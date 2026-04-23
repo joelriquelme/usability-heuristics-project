@@ -15,15 +15,19 @@ const Level4: React.FC = () => {
 
   const [lastDeleted, setLastDeleted] = useState<null | { task: Task; index: number }>(null)
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
+  const [title, setTitle] = useState<string>('')
+  const [desc, setDesc] = useState<string>('')
 
   const toggleDone = (id: string) => {
     setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)))
   }
 
   const addTask = () => {
-    // intentionally confusing form labels in this level; new task creation is simplified
-    const newTask: Task = { id: `t${Date.now()}`, title: 'Nueva tarea', done: false }
+    // use values from the form inputs; fall back to a generic title if empty
+    const newTask: Task = { id: `t${Date.now()}`, title: title || 'Nueva tarea', done: false, desc: desc || undefined }
     setTasks((prev) => [newTask, ...prev])
+    setTitle('')
+    setDesc('')
   }
 
   const handleDelete = (id: string) => {
@@ -61,9 +65,9 @@ const Level4: React.FC = () => {
       <section className="task-creator">
         <div data-eval="show" question-id="level-4-field-names" className="technical-fields">
           <label>task.title</label>
-          <input defaultValue="" />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} />
           <label>task.desc</label>
-          <input defaultValue="" />
+          <input value={desc} onChange={(e) => setDesc(e.target.value)} />
         </div>
         <div className="task-actions"
              data-eval="show" question-id="level-4-form-buttons">
@@ -99,6 +103,8 @@ const Level4: React.FC = () => {
                 <button
                   className="delete-button"
                   onClick={() => handleDelete(task.id)}
+                  disabled={tasks.length <= 1}
+                  aria-disabled={tasks.length <= 1}
                 >
                   <FaSave style={{ color: 'green' }} aria-hidden="true" />
                 </button>
