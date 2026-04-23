@@ -65,7 +65,8 @@ const Level4: React.FC = () => {
           <label>task.desc</label>
           <input defaultValue="" />
         </div>
-        <div className="task-actions">
+        <div className="task-actions"
+             data-eval="show" question-id="level-4-form-buttons">
           <button className="btn" onClick={addTask}>Commit</button>
           <button className="btn" onClick={handleUndo} disabled={!lastDeleted}>Rollback</button>
         </div>
@@ -85,20 +86,17 @@ const Level4: React.FC = () => {
                 <span className="task-title">{task.title}</span>
               </div>
 
-              <div className="task-controls">
+              <div className="task-controls" data-eval={idx === 0 ? 'show' : undefined}
+                    question-id={idx === 0 ? 'level-4-icons' : undefined}>
                 <button
                   className={`btn secondary detail-button`}
-                  title="Ver detalles"
                   onClick={() => toggleDetails(task.id)}
                   aria-expanded={!!expanded[task.id]}
                 >
                   <FaRegPlayCircle aria-hidden="true" />
                 </button>
-                <div
-                    data-eval={idx === 0 ? 'show' : undefined}
-                    question-id={idx === 0 ? 'level-4-delete-icon' : undefined}>
+                <div>
                 <button
-                  title="Eliminar"
                   className="delete-button"
                   onClick={() => handleDelete(task.id)}
                 >

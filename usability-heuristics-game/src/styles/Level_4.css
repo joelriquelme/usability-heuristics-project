@@ -65,7 +65,7 @@
 .task-main { display: flex; gap: 10px; align-items: center; }
 .task-title { color: #0f172a; }
 
-.task-controls { display: flex; gap: 8px; align-items: center; }
+.task-controls { display: flex; gap: 25px; align-items: center; }
 .delete-button { background: transparent; border: none; cursor: pointer; padding: 4px; border-radius: 6px; color: #ff0000; }
 
 .detail-button { padding: 6px 8px; border-radius: 8px; background: #f1f5f9; border: 1px solid #e2e8f0; cursor: pointer; font-size: 13px; }
