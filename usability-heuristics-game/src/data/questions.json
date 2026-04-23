@@ -83,22 +83,23 @@
     ,
     {
       "id": "level-4-icons",
-      "question": "¿El icono (triángulo invertido verde) para eliminar una tarea es intuitivo para los usuarios?",
+      "question": "¿Los iconos para eliminar y desplegar la descripción de una tarea son intuitivos para los usuarios?",
       "options": [
-        { "text": "No, porque no corresponde a la metáfora de eliminar y puede confundir al usuario.", "isCorrect": true },
-        { "text": "Sí, porque cualquier símbolo funciona si es consistente.", "isCorrect": false },
-        { "text": "Sí, porque el color verde indica confirmación.", "isCorrect": false },
-        { "text": "No, pero los usuarios aprenderán con el tiempo.", "isCorrect": false }
+        { "text": "Sí, porque tienen significados claros y consistentes.", "isCorrect": false },
+        { "text": "No, porque no son reconocibles por los usuarios.", "isCorrect": false },
+        { "text": "Sí, porque son fáciles de entender y usar.", "isCorrect": false },
+        { "text": "No, pero los usuarios se acostumbrarán con el tiempo.", "isCorrect": false }
       ]
+
     },
     {
       "id": "level-4-form-buttons",
-      "question": "¿El texto 'Commit' es apropiado para un botón que guarda una tarea?",
+      "question": "¿El texto 'Commit' y 'Rollback' son apropiados para botones que guardan y revierten cambios en una tarea?",
       "options": [
-        { "text": "No, es tecnicismo (jerga de desarrollo) y no habla el idioma del usuario.", "isCorrect": true },
         { "text": "Sí, porque los usuarios entienden términos técnicos.", "isCorrect": false },
         { "text": "No, pero es mejor que no poner nada.", "isCorrect": false },
-        { "text": "Sí, porque suena profesional.", "isCorrect": false }
+        { "text": "Sí, porque tiene un lenguaje claro y comprensible.", "isCorrect": false },
+        { "text": "No, es tecnicismo (jerga de desarrollo) y no habla el idioma del usuario.", "isCorrect": true }
       ]
     },
     {
