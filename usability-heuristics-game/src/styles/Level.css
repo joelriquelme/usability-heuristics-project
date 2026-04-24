@@ -30,7 +30,6 @@
   background: #fff;
   border: 1px solid #e5e7eb;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-  margin-bottom: 12px;
 }
 
 /* Variant used when the title should be narrower and have a light blue background */
@@ -149,3 +148,123 @@
 .evaluative-mode [data-eval="show"].correct-answer {
   outline-color: #00D100; /* Resaltar respuestas correctas en verde */
 }
+
+/* Compact Mode tab styles */
+.floating-tabs {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 1200;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.mode-tab,
+.interface-tab {
+  position: relative;
+  display: block;
+}
+.mode-tab__label {
+  background: #4b5bd7;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px 12px 0 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+  font-weight: 700;
+}
+
+.mode-tab__panel {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px); /* place above the label */
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  min-width: 240px;
+  max-width: 420px;
+  max-height: 72vh;
+  overflow: auto;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+  transition: opacity 160ms ease, transform 160ms ease;
+  opacity: 0;
+  transform: translateY(8px) scale(0.985);
+  pointer-events: none;
+}
+
+.mode-tab.open .mode-tab__panel,
+.interface-tab.open .mode-tab__panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+  .mode-tab__label { padding: 8px 10px; font-size: 14px }
+  .mode-tab__panel { min-width: 120px }
+}
+
+/* When intro is active, blur and dim background content */
+.level-page__content {
+  position: relative;
+}
+.level-page__content.intro-active > :not(.level-intro-overlay) {
+  transition: filter 180ms ease, opacity 180ms ease;
+  /* reduced blur and milder desaturation/brightness so background remains more readable */
+  filter: blur(1.2px) grayscale(0.5) brightness(.96);
+  pointer-events: none;
+}
+.level-intro-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  z-index: 80;
+  pointer-events: auto;
+}
+.level-intro {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mini loader shown while preloading level */
+.level-mini-loader {
+  position: absolute;
+  inset: 0; /* cover the whole content area */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 120;
+  background: rgba(255,255,255,0.92);
+  pointer-events: all;
+}
+.loader-inner { display:flex; gap:12px; align-items:center; background: rgba(255,255,255,0.0); padding: 10px 14px; border-radius: 8px }
+.spinner { width:18px; height:18px; border-radius:50%; border:3px solid rgba(0,0,0,0.08); border-top-color: #2b6cb0; animation: uh-spin 900ms linear infinite }
+@keyframes uh-spin { to { transform: rotate(360deg) } }
+
+/* When loading, hide all content under the loader so only the loader overlay shows */
+.level-page__content.loading > :not(.level-mini-loader) {
+  display: none !important;
+}
+
+/* Remove extra bottom margin when LevelTitle is shown inside the intro overlay */
+.level-intro .level-title { margin-bottom: 0; }
+
+/* Slightly reduce card padding to tighten vertical spacing inside the intro */
+.level-intro.uh-card { padding: 12px; }
+
+/* Go button inside LevelTitle (intro) */
+.level-title__go-button {
+  box-shadow: 0 8px 18px rgba(22,163,74,0.18);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.level-title__go-button:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(22,163,74,0.22); }
+.level-title__go-button svg { width: 16px; height: 16px; }

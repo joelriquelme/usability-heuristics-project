@@ -86,7 +86,7 @@
       "question": "¿Los iconos para eliminar y desplegar la descripción de una tarea son intuitivos para los usuarios?",
       "options": [
         { "text": "Sí, porque tienen significados claros y consistentes.", "isCorrect": false },
-        { "text": "No, porque no son reconocibles por los usuarios.", "isCorrect": false },
+        { "text": "No, porque no son reconocibles por los usuarios.", "isCorrect": true },
         { "text": "Sí, porque son fáciles de entender y usar.", "isCorrect": false },
         { "text": "No, pero los usuarios se acostumbrarán con el tiempo.", "isCorrect": false }
       ]
