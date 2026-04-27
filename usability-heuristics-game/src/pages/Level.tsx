@@ -1,6 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LevelTitle from '../components/LevelTitle';
+import Tutorial from './Tutorial';
 import ToggleMode from '../components/ToggleMode';
 import levelsMeta from '../data/levels.json';
 import '../styles/Level.css';
@@ -24,6 +25,7 @@ const Level: React.FC = () => {
   const [showCorrectLevel, setShowCorrectLevel] = useState(false); // Nuevo estado para mostrar el nivel corregido
   const [alertModalVisible, setAlertModalVisible] = useState(true); // Estado para controlar la visibilidad del AlertModal
   const [showIntro, setShowIntro] = useState<boolean>(true);
+  const [tutorialFinished, setTutorialFinished] = useState<boolean>(false);
   const [modeTabOpen, setModeTabOpen] = useState<boolean>(false);
   const [interfaceTabOpen, setInterfaceTabOpen] = useState<boolean>(false);
   const [showFloatingControls, setShowFloatingControls] = useState<boolean>(false);
@@ -143,13 +145,17 @@ const Level: React.FC = () => {
             <div className="level-intro-overlay">
               <div className="level-intro uh-card">
                 <div className="level-intro__header">
-                  <LevelTitle
-                    eyebrow={`Nivel ${id}`}
-                    title={(levelsMeta as Record<string, { title?: string; description?: string }>)[id]?.title ?? `Nivel ${id}`}
-                    description={(levelsMeta as Record<string, { title?: string; description?: string }>)[id]?.description}
-                    onClose={handleCloseIntro}
-                    large
-                  />
+                  {id === '1' && !tutorialFinished ? (
+                    <Tutorial onFinish={() => setTutorialFinished(true)} />
+                  ) : (
+                    <LevelTitle
+                      eyebrow={`Nivel ${id}`}
+                      title={(levelsMeta as Record<string, { title?: string; description?: string }>)[id ?? '']?.title ?? `Nivel ${id}`}
+                      description={(levelsMeta as Record<string, { title?: string; description?: string }>)[id ?? '']?.description}
+                      onClose={handleCloseIntro}
+                      large
+                    />
+                  )}
                 </div>
               </div>
             </div>

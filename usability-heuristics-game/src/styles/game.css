@@ -129,7 +129,6 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   align-items: center;
   gap: 12px;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-  margin-bottom: 12px;
   border: 1px solid #99dfff;
 }
 

@@ -123,12 +123,13 @@
 .toggle-mode {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+
 }
 .toggle-mode__label {
   font-size: 14px;
   color: #052a4d;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 /* Evaluative mode: by default do NOT highlight elements. Only elements explicitly marked
@@ -186,7 +187,7 @@
   min-width: 240px;
   max-width: 420px;
   max-height: 72vh;
-  overflow: auto;
+  overflow: visible;  
   box-shadow: 0 16px 36px rgba(0,0,0,0.18);
   transition: opacity 160ms ease, transform 160ms ease;
   opacity: 0;
@@ -235,26 +236,6 @@
   margin: 0 auto;
 }
 
-/* Mini loader shown while preloading level */
-.level-mini-loader {
-  position: absolute;
-  inset: 0; /* cover the whole content area */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 120;
-  background: rgba(255,255,255,0.92);
-  pointer-events: all;
-}
-.loader-inner { display:flex; gap:12px; align-items:center; background: rgba(255,255,255,0.0); padding: 10px 14px; border-radius: 8px }
-.spinner { width:18px; height:18px; border-radius:50%; border:3px solid rgba(0,0,0,0.08); border-top-color: #2b6cb0; animation: uh-spin 900ms linear infinite }
-@keyframes uh-spin { to { transform: rotate(360deg) } }
-
-/* When loading, hide all content under the loader so only the loader overlay shows */
-.level-page__content.loading > :not(.level-mini-loader) {
-  display: none !important;
-}
-
 /* Remove extra bottom margin when LevelTitle is shown inside the intro overlay */
 .level-intro .level-title { margin-bottom: 0; }
 
@@ -263,6 +244,19 @@
 
 /* Go button inside LevelTitle (intro) */
 .level-title__go-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  border: none;
+  background: #16a34a;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 700;
   box-shadow: 0 8px 18px rgba(22,163,74,0.18);
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
