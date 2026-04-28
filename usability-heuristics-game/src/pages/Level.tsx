@@ -167,7 +167,13 @@ const Level: React.FC = () => {
             <div className={`mode-tab ${modeTabOpen ? 'open' : ''}`}>
               <button
                 className="mode-tab__label"
-                onClick={() => setModeTabOpen((s) => !s)}
+                onClick={() => {
+                  setModeTabOpen((s) => {
+                    const next = !s;
+                    if (next) setInterfaceTabOpen(false);
+                    return next;
+                  });
+                }}
                 aria-expanded={modeTabOpen}
                 aria-controls="mode-tab-panel"
               >
@@ -182,7 +188,13 @@ const Level: React.FC = () => {
               <div className={`interface-tab ${interfaceTabOpen ? 'open' : ''}`}>
                 <button
                   className="mode-tab__label"
-                  onClick={() => setInterfaceTabOpen((s) => !s)}
+                  onClick={() => {
+                    setInterfaceTabOpen((s) => {
+                      const next = !s;
+                      if (next) setModeTabOpen(false);
+                      return next;
+                    });
+                  }}
                   aria-expanded={interfaceTabOpen}
                   aria-controls="interface-tab-panel"
                 >
