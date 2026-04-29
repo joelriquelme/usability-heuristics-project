@@ -58,7 +58,7 @@ const Level4: React.FC = () => {
   return (
     <div className="uh-card level-4">
       <header className="level-4__header">
-        <h2>TaskControl — Panel</h2>
+        <h2>TaskControl Panel</h2>
         <p>Agrega tus tareas aquí:</p>
       </header>
 

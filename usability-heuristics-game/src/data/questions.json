@@ -112,5 +112,46 @@
         { "text": "Sí, porque ayuda a los desarrolladores a usar la interfaz.", "isCorrect": false }
       ]
     }
+    ,
+    {
+      "id": "level-5-control-mapping",
+      "question": "¿La correspondencia espacial entre controles y dispositivos respeta el 'natural mapping'?",
+      "options": [
+        { "text": "Sí, porque los controles y dispositivos están claramente vinculados.", "isCorrect": false },
+        { "text": "No, pero no afecta la usabilidad.", "isCorrect": false },
+        { "text": "No, porque los controles en la izquierda afectan la derecha (mapeo invertido).", "isCorrect": true },
+        { "text": "Sí, porque el diseño es visualmente simétrico.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-5-slider-mapping",
+      "question": "¿El control de temperatura (slider horizontal) respeta la dirección esperada?",
+      "options": [
+        { "text": "No, los colores frios y calidos no representan la temperatura de manera intuitiva.", "isCorrect": true },
+        { "text": "Sí, mover hacia la derecha aumenta la temperatura.", "isCorrect": false },
+        { "text": "No, pero es intuitivo después de usarlo varias veces.", "isCorrect": false },
+        { "text": "Sí, porque los colores representan la temperatura de manera clara.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-5-intensity-mapping",
+      "question": "¿Los controles de intensidad lumínica cumplen con la convención esperada?",
+      "options": [
+        { "text": "Sí, porque los símbolos son universales.", "isCorrect": false },
+        { "text": "No, ni los iconos ni la dirección representan la intensidad de manera intuitiva.", "isCorrect": true },
+        { "text": "No, pero los usuarios pueden entenderlos con práctica.", "isCorrect": false },
+        { "text": "Sí, porque se entiende de manera intuitiva que signifiquen aumento o disminución de intensidad.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-5-status-mapping",
+      "question": "¿Los indicadores de temperatura e intensidad reflejan correctamente el estado actual del sistema?",
+      "options": [
+        { "text": "No, porque no actualizan en tiempo real.", "isCorrect": false },
+        { "text": "Sí, porque muestran el estado actual de temperatura e intensidad.", "isCorrect": true },
+        { "text": "No, ya que los controles son confusos y no respetan el 'natural mapping'.", "isCorrect": false },
+        { "text": "Sí, porque el diseño es claro y fácil de entender.", "isCorrect": false }
+      ]
+    }
   ]
 }
