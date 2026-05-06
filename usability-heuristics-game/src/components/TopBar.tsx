@@ -19,10 +19,12 @@ export const TopBar: React.FC<Props> = ({ onToggleSidebar }) => {
           </svg>
         </button>
         <div className="uh-topbar-left">
-          <Link to="/" className="uh-brand-link">Usability Heuristics</Link>
+          <Link to="/tutorial" className="uh-brand-link">Usability Heuristics</Link>
         </div>
       </div>
-      <div className="uh-topbar-right">lorem · ipsum</div>
+      <div className="uh-topbar-right">
+        <Link to="/tutorial" className="uh-topbar-link">Tutorial</Link>
+      </div>
     </nav>
   )
 }

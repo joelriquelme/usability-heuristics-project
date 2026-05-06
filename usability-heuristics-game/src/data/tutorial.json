@@ -8,20 +8,16 @@
     "text": "Para navegar entre los niveles, utiliza la barra lateral. Haz clic en el ícono de menú para abrirla y selecciona el nivel que deseas jugar."
   },
   {
-    "image": "./src/assets/tutorial/tutorial-elements.jpg",
-    "text": "En cada nivel encontrarás tres elementos clave: el título del nivel, el botón para cambiar el modo de juego y la interfaz interactiva."
-  },
-  {
-    "image": "./src/assets/tutorial/tutorial-title-button.jpg",
-    "text": "El título indica el principio de usabilidad que se evaluará y ofrece una breve descripción. El funcionamiento del botón de modo de juego se explicará más adelante."
+    "image": "./src/assets/tutorial/tutorial-elements-2.jpg",
+    "text": "Esto es lo que verás al ingresar a un nivel. El título indica el principio de usabilidad que se evaluará y ofrece una breve descripción."
   },
   {
     "image": "./src/assets/tutorial/tutorial-interface.jpg",
-    "text": "Tras leer el título, puedes interactuar libremente con la interfaz para familiarizarte con ella. Presta especial atención a los elementos que podrían estar relacionados con la heurística del nivel."
+    "text": "Tras leer el título y presionar 'Ir al nivel', puedes interactuar libremente con la interfaz para familiarizarte con ella. Presta especial atención a los elementos que podrían estar relacionados con la heurística del nivel."
   },
   {
     "image": "./src/assets/tutorial/tutorial-button.jpg",
-    "text": "¿Recuerdas el botón de modo de juego? Este te permite alternar entre el modo exploratorio y el evaluativo. Cuando te sientas listo, cambia al modo evaluativo para comenzar el desafío."
+    "text": "Al presionar el botón 'Modo', se mostrará una ventana con las opciones de modo de juego. Esto te permite alternar entre el modo exploratorio y el evaluativo. Cuando te sientas listo, cambia al modo evaluativo para comenzar el desafío."
   },
   {
     "image": "./src/assets/tutorial/tutorial-eval-mode.jpg",
@@ -36,8 +32,12 @@
     "text": "A medida que respondas correctamente, los elementos identificados se marcarán con un borde verde dentro de la interfaz."
   },
   {
+    "image": "./src/assets/tutorial/tutorial-congratulations.jpg",
+    "text": "Cuando hayas respondido correctamente a todas las preguntas, recibirás una felicitación por completar el nivel, desbloqueando un nuevo botón que te permitirá ver una versión corregida de la interfaz."
+  },
+  {
     "image": "./src/assets/tutorial/tutorial-interface-correct.jpg",
-    "text": "Al completar todas las preguntas, verás una versión alternativa de la interfaz con los errores corregidos.<br>Interactúa con ella para notar la diferencia y las mejoras respectivas.<br>Cuando estés listo, pasa al siguiente nivel desde la barra lateral."
+    "text": "Al igual que el botón 'Modo', el botón 'Interfaz' también abre una ventana con opciones. Al seleccionar 'Corregida', podrás comparar la interfaz original con una versión mejorada que corrige los problemas de usabilidad identificados. Cuando estés listo, puedes avanzar al siguiente nivel para enfrentar nuevos desafíos en la barra lateral."
   },
   {
     "image": "./src/assets/tutorial/tutorial-red-panda-end.jpg",

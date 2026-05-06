@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom';
 import questionsData from '../data/questions.json';
 // Level corrected components will be loaded dynamically per-level
 import AlertModal from '../components/AlertModal';
+import { markLevelCompleted, isLevelCompleted, markTutorialSeen, isTutorialSeen } from '../utils/levelProgress';
 
 const Level: React.FC = () => {
   const { id } = useParams();
@@ -22,6 +23,7 @@ const Level: React.FC = () => {
     triggeringElement: null as HTMLElement | null, // Track the element that triggered the QuestionBox
   });
   const [allCorrect, setAllCorrect] = useState(false); // Track if all usability issues are resolved
+  const [previouslyCompleted, setPreviouslyCompleted] = useState<boolean>(false); // Persisted completion
   const [showCorrectLevel, setShowCorrectLevel] = useState(false); // Nuevo estado para mostrar el nivel corregido
   const [alertModalVisible, setAlertModalVisible] = useState(true); // Estado para controlar la visibilidad del AlertModal
   const [showIntro, setShowIntro] = useState<boolean>(true);
@@ -111,6 +113,37 @@ const Level: React.FC = () => {
     }
   };
 
+  // Load persisted completion status for this level
+  useEffect(() => {
+    if (!id) return;
+    const done = isLevelCompleted(id);
+    setPreviouslyCompleted(done);
+    if (done) {
+      setAllCorrect(true); // treat previously completed as all-correct for UI
+      setAlertModalVisible(false); // don't show completion modal again
+    }
+  }, [id]);
+
+  // Load persisted tutorial state for level 1
+  useEffect(() => {
+    if (id !== '1') return;
+    const seen = isTutorialSeen();
+    if (seen) {
+      setTutorialFinished(true);
+      // keep the intro/title visible but hide floating controls until title is closed
+      setShowFloatingControls(true);
+    }
+  }, [id]);
+
+  // When allCorrect is achieved now, persist it (only once)
+  useEffect(() => {
+    if (!id) return;
+    if (allCorrect && !previouslyCompleted) {
+      markLevelCompleted(id);
+      setPreviouslyCompleted(true);
+    }
+  }, [allCorrect, id, previouslyCompleted]);
+
   // Resolve the dynamic components ahead of rendering so we can reuse them
   const correctedId = id ? `${id}_correct` : undefined;
   const CorrectedComponent = getLevelComponent(correctedId);
@@ -146,7 +179,10 @@ const Level: React.FC = () => {
               <div className="level-intro uh-card">
                 <div className="level-intro__header">
                   {id === '1' && !tutorialFinished ? (
-                    <Tutorial onFinish={() => setTutorialFinished(true)} />
+                    <Tutorial onFinish={() => {
+                      setTutorialFinished(true);
+                      markTutorialSeen();
+                    }} />
                   ) : (
                     <LevelTitle
                       eyebrow={`Nivel ${id}`}
@@ -162,7 +198,7 @@ const Level: React.FC = () => {
           )}
         </div>
         {/* Floating compact tabs (bottom-left): Modo + Interfaz */}
-        {showFloatingControls && (
+        {showFloatingControls && !showIntro && (
           <div className="floating-tabs">
             <div className={`mode-tab ${modeTabOpen ? 'open' : ''}`}>
               <button
@@ -184,7 +220,7 @@ const Level: React.FC = () => {
               </div>
             </div>
 
-            {allCorrect && (
+            {(allCorrect || previouslyCompleted) && (
               <div className={`interface-tab ${interfaceTabOpen ? 'open' : ''}`}>
                 <button
                   className="mode-tab__label"
