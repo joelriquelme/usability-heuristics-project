@@ -60,8 +60,8 @@ const Level4Correct: React.FC = () => {
   return (
     <div className="uh-card level-4-correct">
       <header className="level-4__header">
-        <h2>MiLista — Tareas</h2>
-        <p>Interfaz corregida: etiquetas claras y símbolos familiares.</p>
+        <h2>MiLista Tareas</h2>
+        <p>Agrega tus tareas aquí:</p>
       </header>
 
       <section className="task-creator">

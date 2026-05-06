@@ -1,6 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LevelTitle from '../components/LevelTitle';
+import Tutorial from './Tutorial';
 import ToggleMode from '../components/ToggleMode';
 import levelsMeta from '../data/levels.json';
 import '../styles/Level.css';
@@ -10,6 +11,7 @@ import { createPortal } from 'react-dom';
 import questionsData from '../data/questions.json';
 // Level corrected components will be loaded dynamically per-level
 import AlertModal from '../components/AlertModal';
+import { markLevelCompleted, isLevelCompleted, markTutorialSeen, isTutorialSeen } from '../utils/levelProgress';
 
 const Level: React.FC = () => {
   const { id } = useParams();
@@ -21,8 +23,14 @@ const Level: React.FC = () => {
     triggeringElement: null as HTMLElement | null, // Track the element that triggered the QuestionBox
   });
   const [allCorrect, setAllCorrect] = useState(false); // Track if all usability issues are resolved
+  const [previouslyCompleted, setPreviouslyCompleted] = useState<boolean>(false); // Persisted completion
   const [showCorrectLevel, setShowCorrectLevel] = useState(false); // Nuevo estado para mostrar el nivel corregido
   const [alertModalVisible, setAlertModalVisible] = useState(true); // Estado para controlar la visibilidad del AlertModal
+  const [showIntro, setShowIntro] = useState<boolean>(true);
+  const [tutorialFinished, setTutorialFinished] = useState<boolean>(false);
+  const [modeTabOpen, setModeTabOpen] = useState<boolean>(false);
+  const [interfaceTabOpen, setInterfaceTabOpen] = useState<boolean>(false);
+  const [showFloatingControls, setShowFloatingControls] = useState<boolean>(false);
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-eval="show"]');
@@ -67,6 +75,12 @@ const Level: React.FC = () => {
     };
   }, [evaluative]);
 
+  // Intro is shown by default on entering the level. Do not persist closure.
+  const handleCloseIntro = () => {
+    setShowIntro(false);
+    setShowFloatingControls(true); // Show floating controls after closing intro
+  };
+
   const checkAllCorrect = () => {
     const elements = document.querySelectorAll('[data-eval="show"]');
     const allHaveCorrectClass = Array.from(elements).every((element) =>
@@ -99,72 +113,140 @@ const Level: React.FC = () => {
     }
   };
 
+  // Load persisted completion status for this level
+  useEffect(() => {
+    if (!id) return;
+    const done = isLevelCompleted(id);
+    setPreviouslyCompleted(done);
+    if (done) {
+      setAllCorrect(true); // treat previously completed as all-correct for UI
+      setAlertModalVisible(false); // don't show completion modal again
+    }
+  }, [id]);
+
+  // Load persisted tutorial state for level 1
+  useEffect(() => {
+    if (id !== '1') return;
+    const seen = isTutorialSeen();
+    if (seen) {
+      setTutorialFinished(true);
+      // keep the intro/title visible but hide floating controls until title is closed
+      setShowFloatingControls(true);
+    }
+  }, [id]);
+
+  // When allCorrect is achieved now, persist it (only once)
+  useEffect(() => {
+    if (!id) return;
+    if (allCorrect && !previouslyCompleted) {
+      markLevelCompleted(id);
+      setPreviouslyCompleted(true);
+    }
+  }, [allCorrect, id, previouslyCompleted]);
+
+  // Resolve the dynamic components ahead of rendering so we can reuse them
+  const correctedId = id ? `${id}_correct` : undefined;
+  const CorrectedComponent = getLevelComponent(correctedId);
+  const LevelComponent = getLevelComponent(id);
+
   return (
     <div className={evaluative ? 'evaluative-mode' : ''}>
       <div className="level-header">
-        {
-          (() => {
-            const meta = id ? (levelsMeta as Record<string, { title?: string; description?: string }>)[id] : undefined;
-            return (
-              <LevelTitle
-                eyebrow={`Nivel ${id}`}
-                title={meta?.title ?? `Nivel ${id}`}
-                description={meta?.description}
-              />
-            );
-          })()
-        }
         <div className="level-header__controls">
-          <ToggleMode className="uh-eval-switch" checked={evaluative} onChange={setEvaluative} />
-          {
-          allCorrect && (
-            <ToggleMode
-              className="uh-eval-switch"
-              checked={showCorrectLevel}
-              onChange={setShowCorrectLevel}
-              text={{ left: 'Interfaz Original', right: 'Interfaz Corregida' }}
-            />
-          ) 
-        }
+          {/* Controls moved to floating Mode tab to avoid always-on UI */}
         </div>
       </div>
       <div className="uh-game-screen level-page">
-        <div className="level-page__content">
-          {
-            (() => {
-              if (showCorrectLevel) {
-                const correctedId = id ? `${id}_correct` : undefined;
-                const CorrectedComponent = getLevelComponent(correctedId);
-                if (CorrectedComponent) {
-                  return (
-                    <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel corregido...</div>}>
-                      <CorrectedComponent />
-                    </Suspense>
-                  );
-                }
-                return (
-                  <div className="uh-card level-page__placeholder">Interfaz corregida no disponible para este nivel.</div>
-                );
-              }
+        <div className={`level-page__content ${showIntro ? 'intro-active' : ''}`}>
+          {/* Render the level (original or corrected) always; intro overlays it when visible */}
+          {showCorrectLevel && CorrectedComponent ? (
+            <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel corregido...</div>}>
+              <CorrectedComponent />
+            </Suspense>
+          ) : LevelComponent ? (
+            <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel...</div>}>
+              <LevelComponent />
+            </Suspense>
+          ) : (
+            <div className="uh-card level-page__placeholder">
+              <h1>Level {id}</h1>
+              <p>Contenido del nivel {id} (placeholder).</p>
+            </div>
+          )}
 
-              const LevelComponent = getLevelComponent(id);
-              if (LevelComponent) {
-                return (
-                  <Suspense fallback={<div className="uh-card level-page__placeholder">Cargando nivel...</div>}>
-                    <LevelComponent />
-                  </Suspense>
-                );
-              }
-
-              return (
-              <div className="uh-card level-page__placeholder">
-                <h1>Level {id}</h1>
-                <p>Contenido del nivel {id} (placeholder).</p>
+          {showIntro && (
+            <div className="level-intro-overlay">
+              <div className="level-intro uh-card">
+                <div className="level-intro__header">
+                  {id === '1' && !tutorialFinished ? (
+                    <Tutorial onFinish={() => {
+                      setTutorialFinished(true);
+                      markTutorialSeen();
+                    }} />
+                  ) : (
+                    <LevelTitle
+                      eyebrow={`Nivel ${id}`}
+                      title={(levelsMeta as Record<string, { title?: string; description?: string }>)[id ?? '']?.title ?? `Nivel ${id}`}
+                      description={(levelsMeta as Record<string, { title?: string; description?: string }>)[id ?? '']?.description}
+                      onClose={handleCloseIntro}
+                      large
+                    />
+                  )}
+                </div>
               </div>
-              );
-            })()
-          }
+            </div>
+          )}
         </div>
+        {/* Floating compact tabs (bottom-left): Modo + Interfaz */}
+        {showFloatingControls && !showIntro && (
+          <div className="floating-tabs">
+            <div className={`mode-tab ${modeTabOpen ? 'open' : ''}`}>
+              <button
+                className="mode-tab__label"
+                onClick={() => {
+                  setModeTabOpen((s) => {
+                    const next = !s;
+                    if (next) setInterfaceTabOpen(false);
+                    return next;
+                  });
+                }}
+                aria-expanded={modeTabOpen}
+                aria-controls="mode-tab-panel"
+              >
+                Modo
+              </button>
+              <div id="mode-tab-panel" className="mode-tab__panel" aria-hidden={!modeTabOpen}>
+                <ToggleMode checked={evaluative} onChange={setEvaluative} />
+              </div>
+            </div>
+
+            {(allCorrect || previouslyCompleted) && (
+              <div className={`interface-tab ${interfaceTabOpen ? 'open' : ''}`}>
+                <button
+                  className="mode-tab__label"
+                  onClick={() => {
+                    setInterfaceTabOpen((s) => {
+                      const next = !s;
+                      if (next) setModeTabOpen(false);
+                      return next;
+                    });
+                  }}
+                  aria-expanded={interfaceTabOpen}
+                  aria-controls="interface-tab-panel"
+                >
+                  Interfaz
+                </button>
+                <div id="interface-tab-panel" className="mode-tab__panel" aria-hidden={!interfaceTabOpen}>
+                  <ToggleMode
+                    checked={showCorrectLevel}
+                    onChange={setShowCorrectLevel}
+                    text={{ left: 'Original', right: 'Corregida' }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
       {allCorrect && alertModalVisible && (
         <AlertModal

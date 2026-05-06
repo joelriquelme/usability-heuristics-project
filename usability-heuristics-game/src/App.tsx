@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import Tutorial from './pages/Tutorial'
@@ -12,7 +12,7 @@ import './styles/game.css'
  * Level-specific interfaces and game logic will live under `src/features/*` later.
  */
 const App: React.FC = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <BrowserRouter>
@@ -22,7 +22,8 @@ const App: React.FC = () => {
           <TopBar onToggleSidebar={() => setSidebarOpen((s) => !s)} />
           <div className="uh-game-container">
             <Routes>
-              <Route path="/" element={<Tutorial />} />
+              <Route path="/" element={<Navigate to="/level/1" replace />} />
+              <Route path="/tutorial" element={<Tutorial />} />
               <Route path="/level/:id" element={<Level />} />
             </Routes>
           </div>
