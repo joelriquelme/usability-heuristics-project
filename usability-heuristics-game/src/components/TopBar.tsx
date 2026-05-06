@@ -19,7 +19,7 @@ export const TopBar: React.FC<Props> = ({ onToggleSidebar }) => {
           </svg>
         </button>
         <div className="uh-topbar-left">
-          <Link to="/tutorial" className="uh-brand-link">Usability Heuristics</Link>
+          <Link to="/tutorial" className="uh-brand-link">Heurísticas de Usabilidad</Link>
         </div>
       </div>
       <div className="uh-topbar-right">

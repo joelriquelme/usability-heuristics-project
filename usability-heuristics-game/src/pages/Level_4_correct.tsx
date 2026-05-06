@@ -78,7 +78,7 @@ const Level4Correct: React.FC = () => {
       </section>
 
       <ul className="task-list">
-        {tasks.map((task, idx) => (
+        {tasks.map((task) => (
           <li key={task.id} className="task-item">
             <div className="task-row">
               <div className="task-main">

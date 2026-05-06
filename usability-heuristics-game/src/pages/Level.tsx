@@ -251,7 +251,7 @@ const Level: React.FC = () => {
       {allCorrect && alertModalVisible && (
         <AlertModal
           title="¡Felicidades!"
-          message="Has respondido correctamente todas las preguntas. Ahora puedes explorar el interfaz corregida con los problemas de usabilidad resueltos."
+          message="Has respondido correctamente todas las preguntas. Ahora puedes explorar la interfaz corregida con los problemas de usabilidad resueltos."
           onClose={() => setAlertModalVisible(false)}
         />
       )}
