@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import LevelTitle from '../components/LevelTitle';
 import Tutorial from './Tutorial';
@@ -31,6 +31,8 @@ const Level: React.FC = () => {
   const [modeTabOpen, setModeTabOpen] = useState<boolean>(false);
   const [interfaceTabOpen, setInterfaceTabOpen] = useState<boolean>(false);
   const [showFloatingControls, setShowFloatingControls] = useState<boolean>(false);
+  const modeTabRef = useRef<HTMLDivElement | null>(null);
+  const interfaceTabRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-eval="show"]');
@@ -135,6 +137,22 @@ const Level: React.FC = () => {
     }
   }, [id]);
 
+  // Close floating tab panels when clicking outside them
+  useEffect(() => {
+    const handleOutside = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (modeTabOpen && modeTabRef.current && !modeTabRef.current.contains(target)) {
+        setModeTabOpen(false);
+      }
+      if (interfaceTabOpen && interfaceTabRef.current && !interfaceTabRef.current.contains(target)) {
+        setInterfaceTabOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutside);
+    return () => document.removeEventListener('mousedown', handleOutside);
+  }, [modeTabOpen, interfaceTabOpen]);
+
   // When allCorrect is achieved now, persist it (only once)
   useEffect(() => {
     if (!id) return;
@@ -200,7 +218,7 @@ const Level: React.FC = () => {
         {/* Floating compact tabs (bottom-left): Modo + Interfaz */}
         {showFloatingControls && !showIntro && (
           <div className="floating-tabs">
-            <div className={`mode-tab ${modeTabOpen ? 'open' : ''}`}>
+            <div ref={modeTabRef} className={`mode-tab ${modeTabOpen ? 'open' : ''}`}>
               <button
                 className="mode-tab__label"
                 onClick={() => {
@@ -220,8 +238,8 @@ const Level: React.FC = () => {
               </div>
             </div>
 
-            {(allCorrect || previouslyCompleted) && (
-              <div className={`interface-tab ${interfaceTabOpen ? 'open' : ''}`}>
+              {(allCorrect || previouslyCompleted) && (
+              <div ref={interfaceTabRef} className={`interface-tab ${interfaceTabOpen ? 'open' : ''}`}>
                 <button
                   className="mode-tab__label"
                   onClick={() => {

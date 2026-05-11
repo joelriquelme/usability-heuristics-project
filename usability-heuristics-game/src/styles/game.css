@@ -122,10 +122,14 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
 .uh-heart.lost { opacity:.25; }
 .uh-lives-count { background:white; padding:4px 8px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.06); font-weight:700; }
 
-.uh-switch { display:inline-block; position:relative; width:64px; height:28px; background:var(--border); border-radius:20px; }
+.uh-switch { display:inline-block; position:relative; }
 .uh-switch input { display:none; }
+.uh-track { display:inline-block; width:64px; height:28px; background:var(--border); border-radius:20px; position:relative; }
 .uh-slider { position:absolute; left:4px; top:4px; width:24px; height:20px; background:white; border-radius:12px; transition:transform .25s ease; }
-.uh-switch input:checked + .uh-slider { transform:translateX(32px); }
+
+/* Move knob when checked and change the track background to green */
+.uh-switch input:checked + .uh-track { background: #28a745; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+.uh-switch input:checked + .uh-track .uh-slider { transform:translateX(32px); }
 
 /* small utilities */
 .uh-card { padding:16px; border-radius:8px; background:var(--content-bg); border:1px solid var(--border); }

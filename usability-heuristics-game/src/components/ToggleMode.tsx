@@ -26,7 +26,9 @@ export const ToggleMode: React.FC<Props> = ({ checked = false, onChange, classNa
             checked={checked}
             onChange={(e) => onChange?.(e.target.checked)}
           />
-          <span className="uh-slider" />
+          <span className="uh-track">
+            <span className="uh-slider" />
+          </span>
         </label>
         <span className="toggle-mode__label">{text.right}</span>
       </div>
