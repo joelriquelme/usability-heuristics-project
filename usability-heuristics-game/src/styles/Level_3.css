@@ -1,0 +1,73 @@
+.level-3 { padding:16px; background:var(--content-bg); border-radius:12px; box-shadow:0 12px 30px rgba(15,23,42,0.04); border:1px solid var(--border) }
+.level-3__header { margin-bottom:12px }
+.level-3__eyebrow { color:#2563eb; font-weight:700; font-size:12px; text-transform:uppercase }
+.level-3__title { margin:6px 0 0; font-size:18px }
+.level-3__intro { margin-top:8px; color:#475569 }
+
+.level-3__main { display:flex; gap:20px }
+.level-3__layout { align-items:flex-start }
+.level-3__left { flex:1 }
+.level-3__player { flex:1; padding:12px; border-radius:8px; border:1px solid #e6eef8; background:#fff }
+.level-3__controls { display:flex; align-items:center; gap:12px }
+.level-3__play { width:56px; height:56px; border-radius:12px; background:#fff; border:1px solid #e5e7eb; display:inline-flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; position:relative }
+
+/* static icon stays visible; dynamic icon only shown when evaluator marks correct */
+.level-3__icon--dynamic { display:none }
+[data-eval="show"].correct-answer .level-3__icon--dynamic { display:inline }
+[data-eval="show"].correct-answer .level-3__icon--static { display:none }
+
+.level-3__nav { display:flex; gap:8px }
+.level-3__nav-btn { border-radius:8px; padding:8px; border:1px solid #e5e7eb; background:#fff; cursor:pointer }
+
+.level-3__volume { display:flex; align-items:center; gap:8px }
+.level-3__vol-btn { border-radius:8px; padding:8px; border:1px solid #e5e7eb; background:#fff; cursor:pointer }
+.level-3__volume-ind { width:120px }
+.level-3__vol-bar { width:100%; height:8px; background:#f1f5f9; border-radius:8px; overflow:hidden }
+.level-3__vol-fill { height:100%; background:linear-gradient(90deg,#60a5fa,#2563eb) }
+
+
+.level-3__visualizer-box { border:2px solid var(--text); border-radius:8px; padding:12px; background:var(--content-bg); margin-bottom:12px }
+.level-3__visualizer { height:180px; border-radius:6px; background:linear-gradient(180deg,#ffffff,#f8fafc); display:flex; align-items:center; justify-content:center }
+.level-3__visualizer canvas { width:100%; height:100%; display:block }
+
+.level-3__info { margin-top:6px; text-align:center }
+[data-eval="show"].correct-answer .level-3__song { opacity:1 }
+
+.level-3__song-row { text-align:center; margin-bottom:10px }
+[data-eval="show"].correct-answer .level-3__song { opacity:1 }
+
+.level-3__song-row { text-align:center; margin-bottom:10px }
+.level-3__song { font-weight:700; color:var(--text); font-size:18px }
+[data-eval="show"].correct-answer .level-3__song { opacity:1 }
+[data-eval="show"].correct-answer .level-3__song { opacity:1 }
+
+
+.level-3__main-progress { margin: 6px 0 14px }
+.level-3__progress-track { width:100%; height:10px; background:var(--border); border-radius:999px; position:relative }
+.level-3__progress-fill { height:100%; background:linear-gradient(90deg,var(--text),#475569); width:0 }
+.level-3__progress-knob { position:absolute; top:50%; transform:translate(-50%,-50%); width:18px; height:18px; border-radius:50%; background:var(--text); box-shadow:0 6px 14px rgba(2,6,23,0.12) }
+.level-3__progress { opacity:1 }
+
+.level-3__list { width:320px }
+.level-3__song-item { padding:8px 10px; border-radius:8px; margin-bottom:6px; background:var(--content-bg); border:1px solid var(--border); color:var(--muted) }
+.level-3__song-item--active { border-color:rgba(0,122,255,0.12); box-shadow:0 6px 14px rgba(2,6,23,0.04); color:var(--text); font-weight:700 }
+/* Controls and play button */
+.level-3__controls-row { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:12px }
+.level-3__small-controls { display:flex; gap:8px; align-items:center }
+.level-3__icon-btn { border-radius:8px; padding:8px; border:1px solid var(--border); background:var(--content-bg); cursor:pointer; color:var(--muted) }
+.level-3__icon-btn:hover { background: rgba(0,0,0,0.03); color:var(--text) }
+.level-3__play-circle { width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid var(--border); background:linear-gradient(180deg,var(--content-bg),#f3f4f6); cursor:pointer }
+.level-3__play-circle.playing { box-shadow:0 10px 30px rgba(2,6,23,0.06) }
+.level-3__play-center { font-size:22px }
+
+.level-3__mini-progress { display:flex; align-items:center; gap:12px; margin-top:8px; justify-content: center; }
+.level-3__mini-track { flex:1; height:6px; background:var(--border); border-radius:999px; overflow:hidden }
+.level-3__mini-fill { height:100%; background:var(--text); width:0 }
+.level-3__volume-inline { display:flex; align-items:center; gap:8px }
+.level-3__vol-bar-inline { width:120px; height:6px; background:#f1f5f9; border-radius:999px; overflow:hidden }
+.level-3__vol-fill-inline { height:100%; background:linear-gradient(90deg,#60a5fa,#2563eb); width:0 }
+.level-3__vol-btn { border-radius:8px; padding:6px; border:1px solid #e5e7eb; background:#fff; cursor:pointer }
+
+/* Volume indicator only visible when marked correct */
+[data-eval="show"].correct-answer .level-3__volume-ind { display:block }
+.level-3__volume-ind { display:none }

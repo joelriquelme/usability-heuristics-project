@@ -8,6 +8,11 @@
     "description": "Aquí experimentarás la incertidumbre de no recibir retroalimentación sobre el progreso de una acción."
   }
   ,
+  "3": {
+    "title": "¿Está sonando o no?",
+    "description": "Comprender la importancia de que el sistema muestre su estado actual en todo momento en tareas continuas como la reproducción de audio o video."
+  }
+  ,
   "4": {
     "title": "¿Qué significa este botón?",
     "description": "Explora cómo el uso de lenguaje técnico y símbolos poco familiares rompe la coincidencia entre el sistema y el mundo real."

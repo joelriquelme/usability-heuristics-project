@@ -152,6 +152,46 @@
         { "text": "No, ya que los controles son confusos y no respetan el 'natural mapping'.", "isCorrect": false },
         { "text": "Sí, porque el diseño es claro y fácil de entender.", "isCorrect": false }
       ]
+    },
+    {
+      "id": "level-8-icon-save",
+      "question": "¿El ícono de disquete realiza la acción esperada 'Guardar'?",
+      "options": [
+        { "text": "No, actualmente ejecuta otra acción y no comunica 'guardar' claramente.", "isCorrect": true },
+        { "text": "Sí, porque siempre guarda automáticamente.", "isCorrect": false },
+        { "text": "No, porque está deshabilitado.", "isCorrect": false },
+        { "text": "Sí, porque muestra una confirmación después de guardar.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-8-icon-star",
+      "question": "¿La estrella representa 'favorito' o hace otra acción inconsistente?",
+      "options": [
+        { "text": "No, la estrella realiza una acción distinta a 'favorito', causando confusión.", "isCorrect": true },
+        { "text": "Sí, porque siempre añade a favoritos.", "isCorrect": false },
+        { "text": "No, porque no tiene efecto alguno.", "isCorrect": false },
+        { "text": "Sí, porque muestra una lista de favoritos al hacer clic.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-8-icon-send",
+      "question": "¿El icono de avión de papel ejecuta la acción esperada 'Enviar'?",
+      "options": [
+        { "text": "No, suele ejecutar otra función y rompe la convención de iconos.", "isCorrect": true },
+        { "text": "Sí, porque abre un diálogo de envío.", "isCorrect": false },
+        { "text": "No, porque el icono está mal dibujado.", "isCorrect": false },
+        { "text": "Sí, porque añade la tarea a la cola de envío.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-8-icon-check",
+      "question": "¿El check confirma acciones o realiza otra acción inconsistente?",
+      "options": [
+        { "text": "No, está mapeado a una acción diferente (por ejemplo cerrar sesión), lo que confunde al usuario.", "isCorrect": true },
+        { "text": "Sí, porque siempre confirma correctamente.", "isCorrect": false },
+        { "text": "No, porque no está visible.", "isCorrect": false },
+        { "text": "Sí, porque guarda cambios y confirma al usuario.", "isCorrect": false }
+      ]
     }
   ]
 }
