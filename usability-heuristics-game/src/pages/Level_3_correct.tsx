@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
-import { FaVolumeUp, FaVolumeDown } from "react-icons/fa";
+import { SlVolume2, SlVolume1 } from 'react-icons/sl'
 import { BsFillSkipForwardFill, BsFillSkipBackwardFill, BsAppleMusic } from 'react-icons/bs'
-import { HiMiniPlayPause } from "react-icons/hi2";
 import '../styles/Level_3.css'
 
 // Dynamically load all files from src/assets/songs using Vite's glob (returns URLs)
@@ -12,11 +11,11 @@ const songs = Object.keys(songModules).map((p, idx) => {
   return { id: `${idx}-${name}`, title, url: songModules[p] }
 })
 
-const Level3: React.FC = () => {
+const Level3Correct: React.FC = () => {
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
   const [progress, setProgress] = useState(0) // 0-100
-  const [volume, setVolume] = useState(0) // 0-10
+  const [volume, setVolume] = useState(5) // 0-10
   const audioCtxRef = useRef<AudioContext | null>(null)
   const gainRef = useRef<GainNode | null>(null)
   const mediaSourceRef = useRef<MediaElementAudioSourceNode | null>(null)
@@ -145,18 +144,22 @@ const Level3: React.FC = () => {
         <section className="level-3__left">
           <div className="level-3__visualizer-box">
             <div className="level-3__visualizer level-3__visual-icon">
-              <BsAppleMusic className="level-3__apple-icon" size={170} />
+              <div className={`level-3__wave ${playing ? 'is-playing' : ''}`} aria-hidden>
+                {Array.from({ length: 30 }).map((_, i) => (
+                  <span key={i} className="level-3__wave-bar" style={{ animationDelay: `${i * 0.06}s` }} />
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="level-3__song-row">
-            <div className="level-3__song">¡Tus canciones favoritas!</div>
+            <div className="level-3__song">{songs[index].title}</div>
           </div>
 
-          <div className="level-3__main-progress" data-eval="show" question-id="level-3-progress-bar">
+          <div className="level-3__main-progress">
             <div className="level-3__progress-track">
-              <div className="level-3__progress-fill" style={{ width: `${100}%` }} />
-              <div className="level-3__progress-knob" style={{ left: `${50}%` }} />
+              <div className="level-3__progress-fill" style={{ width: `${progress}%` }} />
+              <div className="level-3__progress-knob" style={{ left: `${progress}%` }} />
             </div>
           </div>
 
@@ -164,15 +167,14 @@ const Level3: React.FC = () => {
             <div className="level-3__small-controls">
               <button className="level-3__icon-btn" onClick={prev} aria-label="Anterior"><BsFillSkipBackwardFill /></button>
             </div>
-            <div data-eval="show" question-id="level-3-play-button">
+
             <button
               className={`level-3__play-circle ${playing ? 'playing' : ''}`}
               onClick={togglePlay}
               aria-label="Play/Pause"
             >
-              <span className="level-3__play-center"><HiMiniPlayPause /></span>
+              <span className="level-3__play-center">{playing ? '⏸' : '▶'}</span>
             </button>
-            </div>
 
             <div className="level-3__small-controls">
               <button className="level-3__icon-btn" onClick={next} aria-label="Siguiente"><BsFillSkipForwardFill /></button>
@@ -180,18 +182,19 @@ const Level3: React.FC = () => {
           </div>
 
           <div className="level-3__mini-progress">
-            <div className="level-3__volume-inline" data-eval="show" question-id="level-3-volume-controls">
-              <button className="level-3__vol-btn" onClick={volDown} aria-label="Volumen bajar"><FaVolumeDown size={18} /></button>
-              <button className="level-3__vol-btn" onClick={volUp} aria-label="Volumen subir"><FaVolumeUp size={18}/></button>
+            <div className="level-3__volume-inline">
+              <button className="level-3__vol-btn" onClick={volDown} aria-label="Volumen bajar"><SlVolume1 /></button>
+              <div className="level-3__vol-bar-inline"><div className="level-3__vol-fill-inline" style={{ width: `${(volume / 10) * 100}%` }} /></div>
+              <button className="level-3__vol-btn" onClick={volUp} aria-label="Volumen subir"><SlVolume2 /></button>
             </div>
           </div>
         </section>
 
-        <aside className="level-3__list" data-eval="show" question-id="level-3-song-list">
+        <aside className="level-3__list">
           <h4>Lista de canciones</h4>
           <ul>
             {songs.map((s, i) => (
-              <li key={s.id} className="level-3__song-item">{s.title}</li>
+              <li key={s.id} className={`level-3__song-item ${i === index ? 'level-3__song-item--active' : ''}`}>{s.title}</li>
             ))}
           </ul>
         </aside>
@@ -200,4 +203,4 @@ const Level3: React.FC = () => {
   )
 }
 
-export default Level3
+export default Level3Correct

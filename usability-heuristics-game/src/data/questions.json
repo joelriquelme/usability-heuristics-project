@@ -79,8 +79,47 @@
         { "text": "No, porque no entrega información sobre el estado de la descarga", "isCorrect": true },
         { "text": "Sí, porque el icono representa una descarga", "isCorrect": false }
       ]
-    }
-    ,
+    },
+    {
+      "id": "level-3-song-list",
+      "question": "¿La lista de canciones cumple con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque muestra la lista de canciones.", "isCorrect": false },
+        { "text": "Sí, porque es legible y está a la vista", "isCorrect": false },
+        { "text": "No, porque la letra no contrasta lo suficiente con el fondo.", "isCorrect": false },
+        { "text": "No, porque no muestra que canción está seleccionada.", "isCorrect": true }
+      ]
+    },
+    {
+      "id": "level-3-progress-bar",
+      "question": "¿La barra de progreso cumple con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque muestra el progreso de la canción actual.", "isCorrect": false },
+        { "text": "No, porque no muestra el tiempo restante de la canción ni el tiempo total.", "isCorrect": true },
+        { "text": "Sí, porque encaja con la estética general.", "isCorrect": false },
+        { "text": "No, porque no resalta dentro de la interfaz.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-3-play-button",
+      "question": "¿El botón de play/pause cumple con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque cambia su apariencia para indicar si la música está sonando o pausada.", "isCorrect": false },
+        { "text": "No, porque no muestra claramente si la música está sonando o pausada.", "isCorrect": true },
+        { "text": "Sí, porque es fácil de encontrar y usar.", "isCorrect": false },
+        { "text": "No, porque el diseño es confuso y el ícono no es intuitivo.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-3-volume-controls",
+      "question": "¿Los controles de volumen cumplen con el principio de usabilidad 'visibilidad del estado'?",
+      "options": [
+        { "text": "Sí, porque muestran claramente el nivel de volumen actual.", "isCorrect": false },
+        { "text": "Sí, porque son fáciles de usar y tienen un diseño atractivo.", "isCorrect": false },
+        { "text": "No, porque no indican el nivel de volumen actual ni si el sonido está silenciado.", "isCorrect": true },
+        { "text": "No, porque no son visibles en la interfaz.", "isCorrect": false }
+      ]
+    },
     {
       "id": "level-4-icons",
       "question": "¿Los iconos para eliminar y desplegar la descripción de una tarea son intuitivos para los usuarios?",

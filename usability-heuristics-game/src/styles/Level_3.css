@@ -30,19 +30,30 @@
 .level-3__visualizer { height:180px; border-radius:6px; background:linear-gradient(180deg,#ffffff,#f8fafc); display:flex; align-items:center; justify-content:center }
 .level-3__visualizer canvas { width:100%; height:100%; display:block }
 
+/* Simple animated waveform used in the corrected Level 3 UI */
+.level-3__wave { display:flex; align-items:flex-end; justify-content:center; gap:6px; width:100%; height:140px; color:var(--text); overflow:hidden }
+.level-3__wave-bar { width:6px; height:48%; background:currentColor; border-radius:4px; transform-origin:center bottom; transform:scaleY(0.3); animation: wave 900ms ease-in-out infinite; animation-play-state: paused }
+.level-3__wave.is-playing .level-3__wave-bar { animation-play-state: running }
+.level-3__wave-bar:nth-child(odd) { opacity:0.92 }
+.level-3__wave-bar:nth-child(even) { opacity:0.78 }
+
+@keyframes wave {
+	0%, 100% { transform: scaleY(0.25) }
+	50% { transform: scaleY(1) }
+}
+.level-3__wave { display:flex; align-items:flex-end; justify-content:space-between; gap:6px; width:100%; height:140px; color:var(--text); overflow:hidden }
+.level-3__wave-bar { flex:1 1 0; min-width:4px; max-width:48px; height:48%; max-height:100%; background:currentColor; border-radius:4px; transform-origin:center bottom; transform:scaleY(0.3); animation: wave 900ms ease-in-out infinite; animation-play-state: paused; will-change: transform }
+
 .level-3__info { margin-top:6px; text-align:center }
 [data-eval="show"].correct-answer .level-3__song { opacity:1 }
 
-.level-3__song-row { text-align:center; margin-bottom:10px }
-[data-eval="show"].correct-answer .level-3__song { opacity:1 }
 
 .level-3__song-row { text-align:center; margin-bottom:10px }
 .level-3__song { font-weight:700; color:var(--text); font-size:18px }
 [data-eval="show"].correct-answer .level-3__song { opacity:1 }
-[data-eval="show"].correct-answer .level-3__song { opacity:1 }
 
 
-.level-3__main-progress { margin: 6px 0 14px }
+.level-3__main-progress { margin: 6px 0 22px }
 .level-3__progress-track { width:100%; height:10px; background:var(--border); border-radius:999px; position:relative }
 .level-3__progress-fill { height:100%; background:linear-gradient(90deg,var(--text),#475569); width:0 }
 .level-3__progress-knob { position:absolute; top:50%; transform:translate(-50%,-50%); width:18px; height:18px; border-radius:50%; background:var(--text); box-shadow:0 6px 14px rgba(2,6,23,0.12) }
@@ -54,11 +65,20 @@
 /* Controls and play button */
 .level-3__controls-row { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:12px }
 .level-3__small-controls { display:flex; gap:8px; align-items:center }
-.level-3__icon-btn { border-radius:8px; padding:8px; border:1px solid var(--border); background:var(--content-bg); cursor:pointer; color:var(--muted) }
-.level-3__icon-btn:hover { background: rgba(0,0,0,0.03); color:var(--text) }
-.level-3__play-circle { width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid var(--border); background:linear-gradient(180deg,var(--content-bg),#f3f4f6); cursor:pointer }
-.level-3__play-circle.playing { box-shadow:0 10px 30px rgba(2,6,23,0.06) }
-.level-3__play-center { font-size:22px }
+.level-3__icon-btn { border-radius:8px; padding:8px; border:1px solid rgba(255,255,255,0.06); background:#000; cursor:pointer; color:#fff; display:inline-flex; align-items:center; justify-content:center; transition: background-color 120ms ease, transform 140ms ease, box-shadow 160ms ease }
+.level-3__icon-btn:hover { background:#111; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(2,6,23,0.08) }
+.level-3__icon-btn:active { transform: translateY(0) scale(0.995) }
+.level-3__icon-btn:focus-visible { outline:3px solid rgba(59,130,246,0.18); outline-offset:3px }
+
+.level-3__play-circle { width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.06); background:#000; cursor:pointer; transition: background-color 120ms ease, transform 140ms ease, box-shadow 160ms ease }
+.level-3__play-circle:hover { background: #111; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(2,6,23,0.12) }
+.level-3__play-circle:active { transform: translateY(0) scale(0.995) }
+.level-3__play-circle.playing { box-shadow:0 10px 30px rgba(2,6,23,0.12) }
+.level-3__play-circle:focus-visible { outline:3px solid rgba(59,130,246,0.18); outline-offset:4px }
+.level-3__play-center { font-size:22px; color:#fff; display:inline-flex; align-items:center }
+
+/* Ensure SVG icons inside buttons inherit white color */
+.level-3__icon-btn svg, .level-3__vol-btn svg, .level-3__play-circle svg, .level-3__play-center svg { color: #fff; fill: currentColor }
 
 .level-3__mini-progress { display:flex; align-items:center; gap:12px; margin-top:8px; justify-content: center; }
 .level-3__mini-track { flex:1; height:6px; background:var(--border); border-radius:999px; overflow:hidden }
@@ -66,7 +86,10 @@
 .level-3__volume-inline { display:flex; align-items:center; gap:8px }
 .level-3__vol-bar-inline { width:120px; height:6px; background:#f1f5f9; border-radius:999px; overflow:hidden }
 .level-3__vol-fill-inline { height:100%; background:linear-gradient(90deg,#60a5fa,#2563eb); width:0 }
-.level-3__vol-btn { border-radius:8px; padding:6px; border:1px solid #e5e7eb; background:#fff; cursor:pointer }
+.level-3__vol-btn { border-radius:8px; padding:6px; border:1px solid rgba(255,255,255,0.06); background:#000; cursor:pointer; color:#fff; display:inline-flex; align-items:center; justify-content:center; transition: background-color 120ms ease, transform 140ms ease, box-shadow 160ms ease }
+.level-3__vol-btn:hover { background:#111; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(2,6,23,0.08) }
+.level-3__vol-btn:active { transform: translateY(0) scale(0.995) }
+.level-3__vol-btn:focus-visible { outline:3px solid rgba(59,130,246,0.18); outline-offset:3px }
 
 /* Volume indicator only visible when marked correct */
 [data-eval="show"].correct-answer .level-3__volume-ind { display:block }
