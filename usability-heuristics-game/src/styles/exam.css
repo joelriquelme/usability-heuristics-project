@@ -1,0 +1,1559 @@
+/* Exam Module Styles */
+
+/* ===== EXAM LAYOUT ===== */
+.uh-exam-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+.uh-exam-header-section {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: slideDown 0.6s ease-out;
+}
+
+.uh-exam-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.uh-exam-content {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow-y: auto;
+}
+
+.uh-exam-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.uh-exam-footer-text {
+  margin: 0;
+}
+
+/* ===== EXAM HEADER (QUESTION PROGRESS) ===== */
+.uh-exam-question-header {
+  margin-bottom: 30px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.uh-exam-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.uh-exam-question-counter {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3498db;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.uh-exam-heuristic-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.uh-exam-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #ecf0f1;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.uh-exam-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  transition: width 0.4s ease-out;
+  border-radius: 3px;
+}
+
+/* ===== ERROR CONTAINER ===== */
+.uh-exam-error-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.uh-exam-error-container h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e74c3c;
+  margin: 0 0 15px 0;
+}
+
+.uh-exam-question-statement {
+  padding: 16px 18px;
+  background: #f4f8fb;
+  border: 1px solid #d8e6f1;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.uh-exam-question-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #dceefc;
+  color: #1f5f8b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.uh-exam-question-text {
+  margin: 0;
+  color: #1f2d3d;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+/* ===== MOCKUP FRAME ===== */
+.uh-exam-error-scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  min-height: 300px;
+}
+
+.uh-exam-mockup-frame {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.uh-exam-blank-screen {
+  min-height: 220px;
+  background: #ffffff;
+}
+
+.uh-exam-blank-screen-topbar {
+  padding: 10px 14px;
+  background: #f1f4f8;
+  border-bottom: 1px solid #dfe7ef;
+  color: #5b6b7a;
+  font-weight: 600;
+}
+
+.uh-exam-blank-screen-body {
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.uh-exam-empty-state-box {
+  text-align: center;
+  color: #7b8894;
+  border: 1px dashed #c7d3dd;
+  border-radius: 12px;
+  padding: 26px 20px;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+}
+
+.uh-exam-empty-state-box p {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: #374151;
+  font-weight: 700;
+}
+
+.uh-exam-empty-state-box span {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ===== ELEVATOR STATUS ERROR ===== */
+.uh-exam-elevator-panel {
+  min-height: 320px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+}
+
+.uh-exam-elevator-display {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  gap: 4px 10px;
+  align-items: center;
+  padding: 18px 18px 14px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  color: #f9fafb;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.uh-exam-elevator-floor-label {
+  grid-column: 1 / 2;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+}
+
+.uh-exam-elevator-floor-number {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+  color: #f8fafc;
+  text-shadow: 0 0 18px rgba(99, 102, 241, 0.35);
+  min-width: 64px;
+  text-align: right;
+}
+
+.uh-exam-elevator-status {
+  grid-column: 1 / 2;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+.uh-exam-elevator-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.uh-exam-elevator-button {
+  position: relative;
+  height: 58px;
+  border: 0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #dbe4ee 100%);
+  color: #334155;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow:
+    0 8px 16px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.uh-exam-elevator-button::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.uh-exam-elevator-button-active {
+  background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+  color: #111827;
+  box-shadow:
+    0 0 0 4px rgba(245, 158, 11, 0.18),
+    0 10px 20px rgba(245, 158, 11, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.uh-exam-elevator-button-active::before {
+  content: '●';
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 0.75rem;
+  color: rgba(17, 24, 39, 0.75);
+}
+
+.uh-exam-elevator-hint {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border: 1px solid #dbe7f2;
+}
+
+.uh-exam-elevator-hint p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ===== LEVEL 2 UNIQUE SCREENS ===== */
+.uh-exam-metro-kiosk {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #f8fbff 0%, #e8eef6 100%);
+}
+
+.uh-exam-kiosk-header,
+.uh-exam-booking-topbar,
+.uh-exam-video-call-top,
+.uh-exam-bank-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #d9e4ef;
+}
+
+.uh-exam-kiosk-badge,
+.uh-exam-booking-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1e3a8a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.uh-exam-kiosk-header h2,
+.uh-exam-booking-topbar h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #16324f;
+}
+
+.uh-exam-kiosk-display {
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #eff6ff;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.uh-exam-kiosk-display-value {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.uh-exam-kiosk-display-caption {
+  color: #cbd5e1;
+}
+
+.uh-exam-kiosk-panel,
+.uh-exam-booking-list,
+.uh-exam-bank-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uh-exam-kiosk-line,
+.uh-exam-booking-row,
+.uh-exam-bank-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #dbe7f2;
+}
+
+.uh-exam-kiosk-line span,
+.uh-exam-booking-row span,
+.uh-exam-bank-row span {
+  color: #64748b;
+}
+
+.uh-exam-kiosk-line strong,
+.uh-exam-booking-row strong,
+.uh-exam-bank-row strong {
+  color: #0f172a;
+}
+
+.uh-exam-booking-card {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #fffaf5 0%, #f7efe6 100%);
+}
+
+.uh-exam-booking-footer {
+  margin-top: 14px;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.uh-exam-video-call {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.uh-exam-video-call-screen {
+  min-height: 150px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 18px;
+}
+
+.uh-exam-video-call-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.uh-exam-video-call-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.uh-exam-video-btn,
+.uh-exam-shop-button-a,
+.uh-exam-shop-button-b,
+.uh-exam-shop-button-c,
+.uh-exam-bank-actions .uh-exam-button-dangerous {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.uh-exam-video-btn {
+  background: white;
+  color: #0f172a;
+}
+
+.uh-exam-video-btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.uh-exam-shop-layout {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  display: grid;
+  gap: 12px;
+}
+
+.uh-exam-shop-card {
+  padding: 14px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #dbe7f2;
+  box-shadow: 0 8px 18px rgba(15,23,42,0.06);
+}
+
+.uh-exam-shop-card h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #1f2d3d;
+}
+
+.uh-exam-shop-card-primary { border-left: 6px solid #2563eb; }
+.uh-exam-shop-card-secondary { border-left: 6px solid #f59e0b; }
+.uh-exam-shop-card-tertiary { border-left: 6px solid #10b981; }
+
+.uh-exam-shop-button-a { background: #2563eb; color: white; }
+.uh-exam-shop-button-b { background: #f97316; color: white; }
+.uh-exam-shop-button-c { background: #10b981; color: white; }
+
+.uh-exam-bank-transfer {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #fff7ed 0%, #fffbeb 100%);
+}
+
+.uh-exam-bank-warning {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #ffedd5;
+  border: 1px solid #fdba74;
+  color: #9a3412;
+  font-size: 0.92rem;
+}
+
+.uh-exam-bank-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.uh-exam-train-board {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+}
+
+.uh-exam-train-board-top,
+.uh-exam-travel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.uh-exam-train-badge,
+.uh-exam-travel-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.uh-exam-train-board-main {
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  place-items: center;
+}
+
+.uh-exam-train-status-card {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uh-exam-train-status-label {
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.uh-exam-train-status-card strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.uh-exam-train-icon {
+  font-size: 3rem;
+}
+
+.uh-exam-train-track,
+.uh-exam-train-wave {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.uh-exam-train-dot,
+.uh-exam-train-wave-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(148,163,184,0.35);
+}
+
+.uh-exam-train-dot-active {
+  background: #38bdf8;
+  box-shadow: 0 0 0 6px rgba(56,189,248,0.18);
+}
+
+.uh-exam-train-wave-bar:nth-child(2n) {
+  background: rgba(248,250,252,0.16);
+}
+
+.uh-exam-train-board-footer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.uh-exam-train-chip,
+.uh-exam-train-chip-muted {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.1);
+  color: #e2e8f0;
+}
+
+.uh-exam-train-chip-muted {
+  background: rgba(255,255,255,0.04);
+  color: #94a3b8;
+}
+
+.uh-exam-photo-modal {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #e9d5ff 0%, #f8fafc 100%);
+}
+
+.uh-exam-photo-modal-shell {
+  position: relative;
+  min-height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #111827 0%, #312e81 100%);
+}
+
+.uh-exam-photo-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 10px;
+  padding: 16px;
+}
+
+.uh-exam-photo-thumb,
+.uh-exam-photo-thumb-alt,
+.uh-exam-photo-thumb-large {
+  border-radius: 18px;
+  background: linear-gradient(135deg, #93c5fd 0%, #0ea5e9 100%);
+}
+
+.uh-exam-photo-thumb-alt {
+  background: linear-gradient(135deg, #fda4af 0%, #f43f5e 100%);
+}
+
+.uh-exam-photo-thumb-large {
+  grid-column: 1 / 3;
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+}
+
+.uh-exam-photo-float-panel {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: min(260px, calc(100% - 28px));
+  border-radius: 18px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  padding: 14px;
+  box-shadow: 0 18px 30px rgba(15,23,42,0.18);
+}
+
+.uh-exam-photo-overlay-lock {
+  position: absolute;
+  left: 14px;
+  bottom: 64px;
+  max-width: 52%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15,23,42,0.82);
+  color: #f8fafc;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.uh-exam-photo-float-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.uh-exam-photo-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+.uh-exam-photo-slider {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a855f7 0%, #22c55e 100%);
+  margin-bottom: 14px;
+}
+
+.uh-exam-photo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.uh-exam-photo-btn {
+  flex: 1;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #7c3aed;
+  color: white;
+  font-weight: 700;
+}
+
+.uh-exam-photo-btn-muted {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.uh-exam-photo-footer-note {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  max-width: 62%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15,23,42,0.72);
+  color: #f8fafc;
+  font-size: 0.88rem;
+}
+
+.uh-exam-cart-undo-flow {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #f8fafc 0%, #fff7ed 100%);
+  position: relative;
+}
+
+.uh-exam-cart-undo-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.uh-exam-cart-undo-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #ffedd5;
+  color: #c2410c;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.uh-exam-cart-undo-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 18px;
+  background: white;
+  border: 1px solid #fed7aa;
+  box-shadow: 0 10px 18px rgba(15,23,42,0.08);
+}
+
+.uh-exam-cart-undo-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.uh-exam-cart-undo-item-highlight {
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+.uh-exam-cart-undo-item strong {
+  color: #b91c1c;
+}
+
+.uh-exam-cart-undo-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.uh-exam-cart-undo-btn-primary,
+.uh-exam-cart-undo-btn-muted {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.uh-exam-cart-undo-btn-primary {
+  background: #f97316;
+  color: white;
+}
+
+.uh-exam-cart-undo-btn-muted {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.uh-exam-cart-undo-toast {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  max-width: 66%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15,23,42,0.8);
+  color: #f8fafc;
+  font-size: 0.84rem;
+}
+
+.uh-exam-wizard-flow {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+  position: relative;
+}
+
+.uh-exam-wizard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.uh-exam-wizard-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.uh-exam-wizard-path {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.uh-exam-wizard-node {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #e2e8f0;
+  color: #475569;
+  font-weight: 800;
+}
+
+.uh-exam-wizard-node-done {
+  background: #22c55e;
+  color: white;
+}
+
+.uh-exam-wizard-node-active {
+  background: #2563eb;
+  color: white;
+}
+
+.uh-exam-wizard-bridge {
+  height: 4px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #cbd5e1 0%, #94a3b8 100%);
+}
+
+.uh-exam-wizard-card {
+  padding: 16px;
+  border-radius: 18px;
+  background: white;
+  border: 1px solid #dbe7f2;
+  box-shadow: 0 10px 18px rgba(15,23,42,0.08);
+}
+
+.uh-exam-wizard-card h3 {
+  margin: 0 0 12px;
+  color: #0f172a;
+}
+
+.uh-exam-wizard-switches {
+  display: grid;
+  gap: 10px;
+}
+
+.uh-exam-wizard-switch {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #dbe7f2;
+}
+
+.uh-exam-wizard-switch span {
+  color: #334155;
+}
+
+.uh-exam-wizard-switch strong {
+  color: #b91c1c;
+}
+
+.uh-exam-wizard-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.uh-exam-wizard-btn-primary,
+.uh-exam-wizard-btn-muted {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.uh-exam-wizard-btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.uh-exam-wizard-btn-muted {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.uh-exam-travel-app {
+  min-height: 300px;
+  padding: 18px;
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.uh-exam-travel-header h2 {
+  margin: 8px 0 0;
+  font-size: 1.2rem;
+  color: #0f172a;
+}
+
+.uh-exam-travel-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #0f172a;
+  color: white;
+  font-weight: 800;
+}
+
+.uh-exam-travel-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.uh-exam-travel-tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 0;
+  background: #e2e8f0;
+  color: #334155;
+  font-weight: 700;
+}
+
+.uh-exam-travel-tab-active {
+  background: #2563eb;
+  color: white;
+}
+
+.uh-exam-travel-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 10px 18px rgba(15,23,42,0.08);
+  margin-bottom: 10px;
+}
+
+.uh-exam-travel-card strong {
+  color: #0f172a;
+}
+
+.uh-exam-travel-btn-a,
+.uh-exam-travel-btn-b,
+.uh-exam-travel-btn-c {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+}
+
+.uh-exam-travel-btn-a { background: #2563eb; }
+.uh-exam-travel-btn-b { background: #f97316; }
+.uh-exam-travel-btn-c { background: #10b981; }
+
+/* ===== SHOPPING CART ERROR ===== */
+.uh-exam-shopping-cart {
+  padding: 20px;
+  background: white;
+}
+
+.uh-exam-cart-header {
+  border-bottom: 2px solid #ecf0f1;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.uh-exam-cart-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+.uh-exam-cart-items {
+  margin-bottom: 15px;
+}
+
+.uh-exam-cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.uh-exam-item-name {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.uh-exam-item-price {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.uh-exam-cart-total {
+  padding: 10px 0;
+  font-size: 1.1rem;
+  color: #27ae60;
+  border-top: 2px solid #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.uh-exam-cart-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uh-exam-button-no-feedback {
+  padding: 12px 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.uh-exam-button-no-feedback:hover {
+  background: #2980b9;
+}
+
+.uh-exam-hint-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #e74c3c;
+  font-style: italic;
+  padding: 8px;
+  background: #fadbd8;
+  border-left: 3px solid #e74c3c;
+  border-radius: 3px;
+}
+
+/* ===== TECHNICAL INTERFACE ERROR ===== */
+.uh-exam-tech-interface {
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.uh-exam-tech-header {
+  border-bottom: 2px solid #bdc3c7;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.uh-exam-tech-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  color: #2c3e50;
+}
+
+.uh-exam-tech-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* ===== LEVEL 3 OPTIONS ===== */
+.uh-exam-level3-split {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+}
+
+.uh-exam-level3-visual {
+  min-height: 320px;
+}
+
+.uh-exam-level3-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.uh-exam-tech-option input[type="radio"] {
+  width: 16px;
+  height: 16px;
+}
+
+.uh-exam-tech-option div { }
+
+.uh-exam-tech-label { font-weight: 700; margin-bottom: 4px; }
+
+.uh-exam-tech-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+}
+
+.uh-exam-unicode-symbol {
+  font-size: 1.2rem;
+}
+
+.uh-exam-tech-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.uh-exam-button-technical {
+  padding: 10px 20px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ===== NO EXIT DIALOG ===== */
+.uh-exam-no-exit-dialog {
+  padding: 20px;
+  background: white;
+}
+
+.uh-exam-dialog-header {
+  text-align: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.uh-exam-dialog-header h2 {
+  margin: 0;
+  color: #e74c3c;
+  font-size: 1.1rem;
+}
+
+.uh-exam-dialog-content {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.uh-exam-dialog-content p {
+  margin: 0;
+}
+
+.uh-exam-dialog-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.uh-exam-button-dangerous {
+  flex: 1;
+  padding: 12px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.uh-exam-button-disabled {
+  flex: 1;
+  padding: 12px;
+  background: #bdc3c7;
+  color: #7f8c8d;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.uh-exam-no-close-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #e74c3c;
+  font-style: italic;
+  padding: 8px;
+  background: #fadbd8;
+  border-left: 3px solid #e74c3c;
+  border-radius: 3px;
+}
+
+/* ===== INCONSISTENT INTERFACE ===== */
+.uh-exam-inconsistent-interface {
+  padding: 20px;
+}
+
+.uh-exam-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.uh-exam-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+.uh-exam-button-style-a {
+  padding: 10px 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.uh-exam-button-style-b {
+  padding: 8px 16px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 0;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.uh-exam-button-style-c {
+  padding: 12px 18px;
+  background: #27ae60;
+  color: white;
+  border: 2px solid #229954;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.uh-exam-behavior-text {
+  margin: 8px 0 0 0;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* ===== FILE MANAGER ERROR ===== */
+.uh-exam-no-protection {
+  padding: 20px;
+  background: white;
+}
+
+.uh-exam-file-manager {
+  background: #f5f5f5;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.uh-exam-file-manager h2 {
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.uh-exam-file-list {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.uh-exam-file-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: white;
+  border: 1px solid #ecf0f1;
+  border-radius: 3px;
+}
+
+.uh-exam-file-item input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.uh-exam-file-item span {
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.uh-exam-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uh-exam-button-dangerous-no-warning {
+  padding: 12px 20px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.uh-exam-no-confirmation-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #e74c3c;
+  font-style: italic;
+  padding: 8px;
+  background: #fadbd8;
+  border-left: 3px solid #e74c3c;
+  border-radius: 3px;
+}
+
+/* ===== PROBLEM DESCRIPTION ===== */
+.uh-exam-problem-description {
+  padding: 15px;
+  background: #eef6f9;
+  border-left: 4px solid #3498db;
+  border-radius: 4px;
+}
+
+.uh-exam-problem-description p {
+  margin: 0;
+  color: #2c3e50;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.uh-exam-problem-description strong {
+  color: #e74c3c;
+}
+
+/* ===== LEVEL 1 PAGE ===== */
+.uh-exam-level-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.uh-exam-question-content {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ===== NAVIGATION ===== */
+.uh-exam-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.uh-exam-nav-button {
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.uh-exam-nav-button:hover:not(:disabled) {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.uh-exam-nav-button:disabled {
+  background: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.uh-exam-nav-counter {
+  font-weight: 600;
+  color: #2c3e50;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ===== INSTRUCTIONS ===== */
+.uh-exam-instructions {
+  padding: 20px;
+  background: #ecf8f6;
+  border-left: 4px solid #27ae60;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.uh-exam-instructions h4 {
+  margin: 0 0 10px 0;
+  color: #229954;
+  font-size: 1rem;
+}
+
+.uh-exam-instructions p {
+  margin: 0;
+  color: #2c3e50;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .uh-exam-layout {
+    padding: 10px;
+  }
+
+  .uh-exam-content {
+    padding: 20px;
+  }
+
+  .uh-exam-title {
+    font-size: 1.8rem;
+  }
+
+  .uh-exam-navigation {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .uh-exam-nav-button {
+    width: 100%;
+  }
+
+  .uh-exam-mockup-frame {
+    max-width: 100%;
+  }
+}

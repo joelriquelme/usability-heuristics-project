@@ -1,0 +1,70 @@
+{
+  "level": 2,
+  "difficulty": "application",
+  "questions": [
+    {
+      "id": "level-2-visibility",
+      "heuristic": "visibility",
+      "heuristicDescription": "Visibilidad del estado del sistema",
+      "question": "Caso: 1) El usuario sube un archivo grande y hace clic en 'Subir'. 2) La interfaz queda gris y el botón se desactiva. 3) Tras 30 segundos nada cambia y no aparece mensaje de progreso. ¿Cuál es el problema de usabilidad principal?",
+      "options": [
+        { "text": "Visibilidad del estado del sistema", "isCorrect": true },
+        { "text": "Coincidencia entre el sistema y el mundo real", "isCorrect": false },
+        { "text": "Consistencia y estándares", "isCorrect": false },
+        { "text": "Prevención de errores", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": "level-2-match-real-world",
+      "heuristic": "matchRealWorld",
+      "heuristicDescription": "Coincidencia entre el Sistema y el Mundo Real",
+      "question": "Caso: 1) Un usuario busca 'Envío' en la app para cambiar la dirección. 2) Encuentra un botón llamado 'PATCH_SHIP_CFG' y lo presiona. 3) Aparece un mensaje técnico incomprensible. ¿Qué problema de usabilidad subyace?",
+      "options": [
+        { "text": "Coincidencia entre el sistema y el mundo real", "isCorrect": true },
+        { "text": "Control y libertad del usuario", "isCorrect": false },
+        { "text": "Visibilidad del estado del sistema", "isCorrect": false },
+        { "text": "Consistencia y estándares", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": "level-2-user-control",
+      "heuristic": "userControl",
+      "heuristicDescription": "Control y libertad del usuario",
+      "question": "Caso: 1) El usuario borra un producto del carrito por error. 2) La app muestra un aviso breve en la esquina. 3) El mensaje desaparece y no existe opción de deshacer ni recuperar el producto. ¿Cuál es la falla de usabilidad principal?",
+      "options": [
+        { "text": "Control y libertad del usuario", "isCorrect": true },
+        { "text": "Prevención de errores", "isCorrect": false },
+        { "text": "Consistencia y estándares", "isCorrect": false },
+        { "text": "Coincidencia entre el sistema y el mundo real", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": "level-2-consistency",
+      "heuristic": "consistency",
+      "heuristicDescription": "Consistencia y Estándares",
+      "question": "Caso: 1) En la sección A el botón de 'Guardar' es azul y muestra un texto 'Guardar cambios'. 2) En la sección B la misma función aparece como 'Save' en rojo y no pide confirmación. 3) El usuario espera el mismo comportamiento y comete errores. ¿Qué heurística está fallando?",
+      "options": [
+        { "text": "Consistencia y estándares", "isCorrect": true },
+        { "text": "Visibilidad del estado del sistema", "isCorrect": false },
+        { "text": "Control y libertad del usuario", "isCorrect": false },
+        { "text": "Coincidencia entre el sistema y el mundo real", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": "level-2-error-prevention",
+      "heuristic": "errorPrevention",
+      "heuristicDescription": "Prevención de errores",
+      "question": "Caso: 1) El usuario completa un formulario con 15 campos. 2) Al presionar 'Enviar' hay un error en un campo y la página se recarga. 3) Todos los datos ingresados se pierden y debe volver a rellenar. ¿Qué problema de usabilidad principal ocurrió?",
+      "options": [
+        { "text": "Prevención de errores", "isCorrect": true },
+        { "text": "Consistencia y estándares", "isCorrect": false },
+        { "text": "Visibilidad del estado del sistema", "isCorrect": false },
+        { "text": "Control y libertad del usuario", "isCorrect": false }
+      ]
+    }
+  ]
+}

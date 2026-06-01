@@ -1,0 +1,131 @@
+{
+  "level": 1,
+  "difficulty": "identification",
+  "questions": [
+    {
+      "id": "exam-level-1-visibility",
+      "heuristic": "visibility",
+      "heuristicDescription": "Visibilidad del estado del sistema",
+      "question": "Un ascensor no muestra en qué piso está ni confirma si el botón fue presionado para parar en el piso deseado. ¿Qué heurística se está violando?",
+      "options": [
+        {
+          "text": "Visibilidad del estado del sistema",
+          "isCorrect": true
+        },
+        {
+          "text": "Coincidencia entre el sistema y el mundo real",
+          "isCorrect": false
+        },
+        {
+          "text": "Control y libertad del usuario",
+          "isCorrect": false
+        },
+        {
+          "text": "Prevención de errores",
+          "isCorrect": false
+        }
+      ],
+      "difficulty": "identification"
+    },
+    {
+      "id": "exam-level-1-match-real-world",
+      "heuristic": "matchRealWorld",
+      "heuristicDescription": "Coincidencia entre el Sistema y el Mundo Real",
+      "question": "La interfaz usa términos como 'sincronizar credenciales' y 'ejecutar protocolo' en lugar de palabras cotidianas. ¿Qué heurística se está violando?",
+      "options": [
+        {
+          "text": "Visibilidad del estado del sistema",
+          "isCorrect": false
+        },
+        {
+          "text": "Coincidencia entre el sistema y el mundo real",
+          "isCorrect": true
+        },
+        {
+          "text": "Consistencia y estándares",
+          "isCorrect": false
+        },
+        {
+          "text": "Prevención de errores",
+          "isCorrect": false
+        }
+      ],
+      "difficulty": "identification"
+    },
+    {
+      "id": "exam-level-1-user-control",
+      "heuristic": "userControl",
+      "heuristicDescription": "Control y libertad del usuario",
+      "question": "Un cuadro de confirmación no tiene botón cancelar, ni cierre con X, ni opción para volver atrás. ¿Qué heurística se está violando?",
+      "options": [
+        {
+          "text": "Visibilidad del estado del sistema",
+          "isCorrect": false
+        },
+        {
+          "text": "Control y libertad del usuario",
+          "isCorrect": true
+        },
+        {
+          "text": "Consistencia y estándares",
+          "isCorrect": false
+        },
+        {
+          "text": "Prevención de errores",
+          "isCorrect": false
+        }
+      ],
+      "difficulty": "identification"
+    },
+    {
+      "id": "exam-level-1-consistency",
+      "heuristic": "consistency",
+      "heuristicDescription": "Consistencia y Estándares",
+      "question": "El mismo botón de guardar aparece con colores, etiquetas y comportamientos distintos en pantallas similares. ¿Qué heurística se está violando?",
+      "options": [
+        {
+          "text": "Visibilidad del estado del sistema",
+          "isCorrect": false
+        },
+        {
+          "text": "Coincidencia entre el sistema y el mundo real",
+          "isCorrect": false
+        },
+        {
+          "text": "Consistencia y estándares",
+          "isCorrect": true
+        },
+        {
+          "text": "Control y libertad del usuario",
+          "isCorrect": false
+        }
+      ],
+      "difficulty": "identification"
+    },
+    {
+      "id": "exam-level-1-error-prevention",
+      "heuristic": "errorPrevention",
+      "heuristicDescription": "Prevención de errores",
+      "question": "Un botón elimina archivos sin pedir confirmación y sin advertir que la acción es irreversible. ¿Qué heurística se está violando?",
+      "options": [
+        {
+          "text": "Visibilidad del estado del sistema",
+          "isCorrect": false
+        },
+        {
+          "text": "Coincidencia entre el sistema y el mundo real",
+          "isCorrect": false
+        },
+        {
+          "text": "Prevención de errores",
+          "isCorrect": true
+        },
+        {
+          "text": "Consistencia y estándares",
+          "isCorrect": false
+        }
+      ],
+      "difficulty": "identification"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "heuristic": "Visibilidad del estado del sistema",
+    "problem": "Un usuario está usando una aplicación de reserva de trenes. Después de enviar el pago, la pantalla muestra un indicador que gira sin texto y no indica si la compra fue procesada. ¿Cuál de las siguientes alternativas es la mejor para mejorar la visibilidad del estado del sistema?",
+    "options": [
+      "Mantener el indicador girando y añadir un icono genérico de información en la esquina.",
+      "Mostrar un mensaje claro: 'Procesando su pago... (no cierre esta ventana)'; cuando termine, mostrar 'Reserva confirmada' con número de reserva y enlace a la entrada.'",
+      "Quitar el indicador por completo y esperar 10 segundos antes de volver a la página principal.",
+      "Enviar un correo al usuario con la confirmación y mostrar la misma pantalla giratoria hasta que cierre la app.",
+      "Mostrar sólo un sonido breve y un cambio de color de fondo para indicar que algo ocurrió."
+    ],
+    "answer": 1,
+    "explanation": "Proveer mensajes claros durante el proceso y confirmar con número de reserva ofrece retroalimentación explícita y guía al usuario sobre el estado y siguientes pasos."
+  },
+  {
+    "id": 2,
+    "heuristic": "Coincidencia entre el sistema y el mundo real",
+    "problem": "Una aplicación muestra este mensaje técnico cuando falla una operación: 'Error 0x00023: NullPointerException'. ¿Cuál alternativa reescribe mejor ese mensaje para cumplir con la coincidencia entre el sistema y el mundo real?",
+    "options": [
+      "Error 0x00023: NullPointerException — contacte a soporte.",
+      "Se produjo un error interno (código 0x00023). Intente cerrar y volver a abrir la aplicación. Si el problema persiste, contacte a soporte y proporcione este código.",
+      "NullPointerException — reinicie su equipo.",
+      "Fallo en el módulo X: NullPointerException. Consulte el manual técnico.",
+      "Se detectó una inconsistencia en la memoria (0x00023). No se puede continuar."
+    ],
+    "answer": 1,
+    "explanation": "La opción usa lenguaje comprensible, explica lo que pasó en términos del usuario y sugiere acciones prácticas, alineándose con metáforas y terminología del mundo real."
+  },
+  {
+    "id": 3,
+    "heuristic": "Control y libertad del usuario",
+    "problem": "En una tienda online, al eliminar un artículo del carrito no hay posibilidad de recuperarlo y la acción es irreversible sin confirmar. ¿Cuál alternativa respeta mejor el principio de control y libertad del usuario?",
+    "options": [
+      "Mantener la eliminación irreversible para prevenir errores.",
+      "Añadir una confirmación modal sin opción de deshacer después de cerrarla.",
+      "Permitir deshacer la eliminación durante 10 segundos mediante un botón 'Deshacer' en la esquina de la pantalla, y además guardar historial de cambios en sesión.",
+      "Ocultar la acción de eliminar detrás de un menú avanzado para evitar clics accidentales.",
+      "Reemplazar el botón eliminar por un texto pequeño 'Quitar' sin confirmación."
+    ],
+    "answer": 2,
+    "explanation": "Ofrecer un periodo de 'Deshacer' y/o historial de cambios da al usuario libertad para cancelar acciones, reduciendo consecuencias de errores sin interrumpir el flujo."
+  },
+  {
+    "id": 4,
+    "heuristic": "Consistencia y estándares",
+    "problem": "Una aplicación usa iconos y etiquetas inconsistentes: en una sección 'Guardar' aparece un disquete, en otra 'Guardar' es un botón llamado 'OK', y en otra un icono de nube. ¿Cuál rediseño mejora la consistencia?",
+    "options": [
+      "Mantener los distintos iconos para que cada sección se vea única.",
+      "Usar siempre el mismo icono de 'Guardar' y la etiqueta 'Guardar' en todas las secciones, respetando convenciones de la plataforma.",
+      "Eliminar todas las etiquetas y dejar sólo iconos distintos para ahorrar espacio.",
+      "Cambiar las etiquetas a sinónimos según la sección ('OK', 'Enviar', 'Guardar') para mayor variedad.",
+      "Poner una leyenda explicativa en la ayuda que describa qué hace cada icono, sin cambiar los iconos actuales."
+    ],
+    "answer": 1,
+    "explanation": "Unificar iconos y etiquetas según estándares reduce la carga de aprendizaje y evita confusión; la opción mantiene consistencia visual y semántica."
+  },
+  {
+    "id": 5,
+    "heuristic": "Prevención de errores",
+    "problem": "En un formulario de transferencia bancaria, el campo 'IBAN' acepta cualquier texto y la validación sólo ocurre al enviar, causando errores frecuentes por número mal escrito. ¿Cuál alternativa previene mejor los errores?",
+    "options": [
+      "Dejar la validación sólo al enviar y mostrar un error genérico si falla.",
+      "Añadir validación en tiempo real mientras el usuario escribe, con formato automático y sugerencias, y deshabilitar el botón 'Enviar' hasta que el IBAN sea válido.",
+      "Reemplazar el campo por un archivo CSV que el usuario debe subir con los datos.",
+      "Mostrar ejemplos de IBAN en un tooltip sin validación interactiva.",
+      "Permitir cualquier entrada y ofrecer reembolso si la transferencia falla."
+    ],
+    "answer": 1,
+    "explanation": "La validación en tiempo real y el formateo automático evitan que el usuario cometa errores y guía la entrada correcta antes del envío."
+  }
+]

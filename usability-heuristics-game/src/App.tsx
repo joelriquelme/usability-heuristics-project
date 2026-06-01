@@ -4,6 +4,9 @@ import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import Tutorial from './pages/Tutorial'
 import Level from './pages/Level'
+import ExamLevel1 from './pages/exam/ExamLevel1'
+import ExamLevel2 from './pages/exam/ExamLevel2'
+import ExamLevel3 from './pages/exam/ExamLevel3'
 import './styles/game.css'
 
 /**
@@ -25,6 +28,9 @@ const App: React.FC = () => {
               <Route path="/" element={<Navigate to="/level/1" replace />} />
               <Route path="/tutorial" element={<Tutorial />} />
               <Route path="/level/:id" element={<Level />} />
+              <Route path="/exam/level-1" element={<ExamLevel1 />} />
+              <Route path="/exam/level-2" element={<ExamLevel2 />} />
+              <Route path="/exam/level-3" element={<ExamLevel3 />} />
             </Routes>
           </div>
         </div>
