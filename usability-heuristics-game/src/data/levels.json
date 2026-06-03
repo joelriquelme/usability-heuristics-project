@@ -1,25 +1,36 @@
 {
   "1": {
     "title": "¿Pagaste o no pagaste?",
-    "description": "Explora cómo la falta de visibilidad del estado puede causar acciones indeseadas o confusiones."
+    "description": "Explora cómo la falta de visibilidad del estado puede causar acciones indeseadas o confusiones.",
+    "heuristic": "Visibilidad del estado del sistema"
+     
   },
   "2": {
     "title": "¿Ya se descargó?",
-    "description": "Aquí experimentarás la incertidumbre de no recibir retroalimentación sobre el progreso de una acción."
+    "description": "Aquí experimentarás la incertidumbre de no recibir retroalimentación sobre el progreso de una acción.",
+    "heuristic": "Visibilidad del estado del sistema"
   }
   ,
   "3": {
     "title": "¿Está sonando o no?",
-    "description": "Comprender la importancia de que el sistema muestre su estado actual en todo momento en tareas continuas como la reproducción de audio o video."
+    "description": "Comprender la importancia de que el sistema muestre su estado actual en todo momento en tareas continuas como la reproducción de audio o video.",
+    "heuristic": "Visibilidad del estado del sistema"
   }
   ,
   "4": {
     "title": "¿Qué significa este botón?",
-    "description": "Explora cómo el uso de lenguaje técnico y símbolos poco familiares rompe la coincidencia entre el sistema y el mundo real."
+    "description": "Explora cómo el uso de lenguaje técnico y símbolos poco familiares rompe la coincidencia entre el sistema y el mundo real.",
+    "heuristic": "Coincidencia entre el Sistema y el Mundo Real"
   }
   ,
   "5": {
     "title": "El panel de control invertido",
-    "description": "Observa cómo la disposición espacial y los signos invertidos (sliders, botones, controles) generan confusión y errores mentales."
+    "description": "Observa cómo la disposición espacial y los signos invertidos (sliders, botones, controles) generan confusión y errores mentales.",
+    "heuristic": "Coincidencia entre el Sistema y el Mundo Real"
+  },
+  "7": {
+    "title": "Publicación equivocada",
+    "description": "Reconoce la importancia de ofrecer opciones para cancelar, editar o deshacer acciones en redes sociales o foros.",
+    "heuristic": "Control y libertad del usuario"
   }
 }

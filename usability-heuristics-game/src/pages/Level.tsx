@@ -12,6 +12,7 @@ import questionsData from '../data/questions.json';
 // Level corrected components will be loaded dynamically per-level
 import AlertModal from '../components/AlertModal';
 import { markLevelCompleted, isLevelCompleted, markTutorialSeen, isTutorialSeen } from '../utils/levelProgress';
+import { IoClose } from 'react-icons/io5';
 
 const Level: React.FC = () => {
   const { id } = useParams();
@@ -206,6 +207,7 @@ const Level: React.FC = () => {
                       eyebrow={`Nivel ${id}`}
                       title={(levelsMeta as Record<string, { title?: string; description?: string }>)[id ?? '']?.title ?? `Nivel ${id}`}
                       description={(levelsMeta as Record<string, { title?: string; description?: string }>)[id ?? '']?.description}
+                      heuristic={(levelsMeta as Record<string, { title?: string; description?: string; heuristic?: string }>)[id ?? '']?.heuristic}
                       onClose={handleCloseIntro}
                       large
                     />
@@ -280,7 +282,7 @@ const Level: React.FC = () => {
               className="question-box-close"
               onClick={() => setQuestionBoxData((prev) => ({ ...prev, visible: false }))} // Only hide modal when explicitly closed
             >
-              Close
+              <IoClose size={20} />
             </button>
             <QuestionBox
               question={questionBoxData.question}

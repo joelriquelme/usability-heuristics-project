@@ -4,11 +4,12 @@ type LevelTitleProps = {
   eyebrow?: string
   title: string
   description?: string
+  heuristic?: string
   onClose?: () => void
   large?: boolean
 }
 
-const LevelTitle: React.FC<LevelTitleProps> = ({ eyebrow, title, description, onClose, large }) => {
+const LevelTitle: React.FC<LevelTitleProps> = ({ eyebrow, title, description, heuristic, onClose, large }) => {
   const containerStyle: React.CSSProperties = large
     ? { padding: '1.5rem', minHeight: 140, position: 'relative' }
     : { position: 'relative' }
@@ -29,6 +30,8 @@ const LevelTitle: React.FC<LevelTitleProps> = ({ eyebrow, title, description, on
       {eyebrow ? <span className="level-title__eyebrow">{eyebrow}</span> : null}
       <h1 className="level-title__heading">{title}</h1>
       {description ? <p className="level-title__description">{description}</p> : null}
+      {heuristic ? <p className="level-title__heuristic"><strong>Heurística relacionada:</strong> <strong>{heuristic}</strong></p> : null}
+
     </div>
   )
 }

@@ -192,6 +192,36 @@
         { "text": "Sí, porque el diseño es claro y fácil de entender.", "isCorrect": false }
       ]
     },
+        {
+      "id": "level-7-publish",
+      "question": "¿Cuál sería una posible mejora para solucionar el problema de publicar un mensaje erroneo?",
+      "options": [
+        { "text": "No hacer nada, los usuarios se acostumbrarán a no poder corregir errores.", "isCorrect": false },
+        { "text": "Agregar un botón de 'Deshacer' luego de publicar.", "isCorrect": true },
+        { "text": "Aumentar el tamaño y cambiar el color del botón de publicar para que sea más visible.", "isCorrect": false },
+        { "text": "Obligar al usuario a pasar por una vista previa de pantalla completa antes de confirmar el envío.", "isCorrect": false }
+      ]
+    },
+    {
+"id": "level-7-correction-frustration",
+      "question": "¿Por qué el usuario se podría sentir frustrado con respecto al typo de la publicación anterior?",
+      "options": [
+        { "text": "Porque el diseño visual de la interfaz no resalta lo suficiente los errores ortográficos antes de enviar.", "isCorrect": false },
+        { "text": "Porque el sistema no corrige automáticamente los errores ortográficos.", "isCorrect": false },
+        { "text": "Porque el sistema no ofrece ninguna acción inmediata para deshacer o corregir el error cometido.", "isCorrect": true },
+        { "text": "Porque el sistema prioriza la integridad de los datos impidiendo cualquier modificación posterior a la publicación.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-7-error",
+      "question": "¿Cómo se podría mejorar la experiencia del usuario para evitar la frustración de cometer un error al publicar un mensaje?",
+      "options": [
+        { "text": "Agregando comentarios o respuestas a la publicación para aclarar el error.", "isCorrect": false },
+        { "text": "Agregar un sistema de reportes para que otros usuarios puedan señalar el error.", "isCorrect": false },
+        { "text": "No hay solución posible, el error es permanente.", "isCorrect": false },
+        { "text": "Agregando un botón de \"Editar\" o \"Eliminar\" luego de publicar.", "isCorrect": true }
+      ]
+    },
     {
       "id": "level-8-icon-save",
       "question": "¿El ícono de disquete realiza la acción esperada 'Guardar'?",

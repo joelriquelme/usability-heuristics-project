@@ -190,10 +190,16 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   background-color: #f0f0f0;
 }
 
-.question-box__option.selected {
+.question-box__option.selected-correct {
   background-color: #d1e7dd;
   border-color: #0f5132;
   color: #0f5132;
+}
+
+.question-box__option.selected-incorrect {
+  background-color: #f8d7da;
+  border-color: #b02a37;
+  color: #b02a37;
 }
 
 /* Feedback styles for QuestionBox */
@@ -261,13 +267,21 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
   position: absolute;
   top: 10px;
   right: 10px;
-  background: var(--primary);
-  color: white;
+  background: transparent;
+  color: #6b7280;
   border: none;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 4px;
   cursor: pointer;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.12s ease;
+}
+
+.question-box-close:hover {
+  color: #111827;
 }
 
 /* Styles for AlertModal */
