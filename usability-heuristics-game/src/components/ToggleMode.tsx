@@ -1,36 +1,56 @@
 import React from 'react'
 import '../styles/game.css'
 
-type ToggleText = {
-  left: string
-  right: string
-}
+// Definimos los tipos de modos posibles para mayor seguridad
+export type GameMode = 'exploratory' | 'evaluative' | 'corrected'
 
 type Props = {
-  checked?: boolean
-  onChange?: (v: boolean) => void
+  currentMode: GameMode
+  onChangeMode: (mode: GameMode) => void
+  allCorrect: boolean
   className?: string
-  text?: ToggleText
 }
 
-/** ToggleMode: simple presentational toggle used in the global layout */
-export const ToggleMode: React.FC<Props> = ({ checked = false, onChange, className, text = { left: 'Modo exploratorio', right: 'Modo evaluativo' } }) => {
-  const classes = ['uh-switch', className].filter(Boolean).join(' ')
+/** ToggleMode: Selector de modo (Exploratorio, Evaluativo, Corregido) */
+export const ToggleMode: React.FC<Props> = ({ 
+  currentMode, 
+  onChangeMode, 
+  allCorrect, 
+  className 
+}) => {
+  const classes = ['toggle-mode-container', className].filter(Boolean).join(' ')
+
   return (
-    <div className="toggle-mode-container">
-      <div className="toggle-mode">
-        <span className="toggle-mode__label">{text.left}</span>
-        <label className={classes}>
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={(e) => onChange?.(e.target.checked)}
-          />
-          <span className="uh-track">
-            <span className="uh-slider" />
-          </span>
-        </label>
-        <span className="toggle-mode__label">{text.right}</span>
+    <div className={classes}>
+      <div className="triple-toggle">
+        {/* Botón Exploratorio */}
+        <button
+          type="button"
+          className={`toggle-btn ${currentMode === 'exploratory' ? 'active' : ''}`}
+          onClick={() => onChangeMode('exploratory')}
+        >
+          Exploratorio
+        </button>
+
+        {/* Botón Evaluativo */}
+        <button
+          type="button"
+          className={`toggle-btn ${currentMode === 'evaluative' ? 'active' : ''}`}
+          onClick={() => onChangeMode('evaluative')}
+        >
+          Evaluativo
+        </button>
+
+        {/* Botón Corregido (Condicionado a allCorrect) */}
+        {allCorrect && (
+          <button
+            type="button"
+            className={`toggle-btn ${currentMode === 'corrected' ? 'active' : ''}`}
+            onClick={() => onChangeMode('corrected')}
+          >
+            Corregido
+          </button>
+        )}
       </div>
     </div>
   )

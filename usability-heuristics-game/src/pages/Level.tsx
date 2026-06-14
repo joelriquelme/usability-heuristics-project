@@ -2,7 +2,7 @@ import React, { Suspense, useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import LevelTitle from '../components/LevelTitle';
 import Tutorial from './Tutorial';
-import ToggleMode from '../components/ToggleMode';
+import ToggleMode, { type GameMode } from '../components/ToggleMode';
 import levelsMeta from '../data/levels.json';
 import '../styles/Level.css';
 import { getLevelComponent } from './levels';
@@ -93,6 +93,25 @@ const Level: React.FC = () => {
     console.log('All correct:', allHaveCorrectClass && elements.length > 0); // Ensure there are elements and all are correct
   };
 
+  const getCurrentMode = (): GameMode => {
+  if (showCorrectLevel) return 'corrected';
+  if (evaluative) return 'evaluative';
+  return 'exploratory';
+  };
+
+  const handleModeChange = (newMode: GameMode) => {
+  if (newMode === 'corrected') {
+    setShowCorrectLevel(true);
+    setEvaluative(false); // O true, dependiendo de si 'corregido' mantiene el fondo evaluativo
+  } else if (newMode === 'evaluative') {
+    setShowCorrectLevel(false);
+    setEvaluative(true);
+  } else {
+    // Exploratorio
+    setShowCorrectLevel(false);
+    setEvaluative(false);
+  }
+  };
 
   useEffect(() => {
     if (questionBoxData.visible) {
@@ -236,35 +255,14 @@ const Level: React.FC = () => {
                 Modo
               </button>
               <div id="mode-tab-panel" className="mode-tab__panel" aria-hidden={!modeTabOpen}>
-                <ToggleMode checked={evaluative} onChange={setEvaluative} />
+                {/* Inyectamos las nuevas propiedades aquí */}
+                <ToggleMode 
+                  currentMode={getCurrentMode()} 
+                  onChangeMode={handleModeChange} 
+                  allCorrect={allCorrect} 
+                />
               </div>
             </div>
-
-              {(allCorrect || previouslyCompleted) && (
-              <div ref={interfaceTabRef} className={`interface-tab ${interfaceTabOpen ? 'open' : ''}`}>
-                <button
-                  className="mode-tab__label"
-                  onClick={() => {
-                    setInterfaceTabOpen((s) => {
-                      const next = !s;
-                      if (next) setModeTabOpen(false);
-                      return next;
-                    });
-                  }}
-                  aria-expanded={interfaceTabOpen}
-                  aria-controls="interface-tab-panel"
-                >
-                  Interfaz
-                </button>
-                <div id="interface-tab-panel" className="mode-tab__panel" aria-hidden={!interfaceTabOpen}>
-                  <ToggleMode
-                    checked={showCorrectLevel}
-                    onChange={setShowCorrectLevel}
-                    text={{ left: 'Original', right: 'Corregida' }}
-                  />
-                </div>
-              </div>
-            )}
           </div>
         )}
       </div>
