@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Tutorial.css';
 import '../styles/Level_1.css'; // Reuse styles from Level 1
 import tutorialData from '../data/tutorial.json';
@@ -12,6 +13,9 @@ const imageModules = (import.meta as any).glob('/src/assets/tutorial/*.{jpg,jpeg
 
 const Tutorial: React.FC<TutorialProps> = ({ onFinish }) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
+
+  const isLastStep = currentStep === tutorialData.length - 1;
 
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, tutorialData.length - 1));
@@ -19,6 +23,13 @@ const Tutorial: React.FC<TutorialProps> = ({ onFinish }) => {
 
   const handlePrev = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 0));
+  };
+
+  // On the final step: continue to Level 1. When embedded in the Level 1
+  // intro overlay we close it via onFinish; standalone we navigate there.
+  const handleContinue = () => {
+    if (onFinish) onFinish();
+    else navigate('/level/1');
   };
 
   const renderImage = () => {
@@ -31,47 +42,54 @@ const Tutorial: React.FC<TutorialProps> = ({ onFinish }) => {
   };
 
   return (
-    <div className="uh-game-screen level-page">
-      <div className="tutorial-page-content">
-        <div className="level-1__header">
-          <div>
-            <span className="level-1__eyebrow">Tutorial</span>
-          </div>
-          <div className="level-1__status-chip">Paso {currentStep + 1} de {tutorialData.length}</div>
-        </div>
-
-        <div className="tutorial-image-container">{renderImage()}</div>
-        <div className="tutorial-text-container">
-          <p className="tutorial-text" dangerouslySetInnerHTML={{ __html: tutorialData[currentStep].text }} />
-        </div>
-
-        <div className="tutorial__summary">
-          <div>
-            <button className="tutorial__button" onClick={handlePrev} disabled={currentStep === 0}>←</button>
-          </div>
-          <div className="dots">
-            {tutorialData.map((_, index) => (
-              <span
-                key={index}
-                className={`dot ${index === currentStep ? 'active' : ''}`}
-                onClick={() => setCurrentStep(index)}
-              />
-            ))}
-          </div>
-          <div>
-            <button className="tutorial__button" onClick={handleNext} disabled={currentStep === tutorialData.length - 1}>→</button>
-          </div>
-          {onFinish && currentStep === tutorialData.length - 1 && (
-            <div style={{ marginLeft: 12 }}>
-              <button className="level-title__go-button" onClick={onFinish} aria-label="Ir al nivel">
-                <span>Ir a nivel</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
+    <div className={`tutorial-shell ${onFinish ? 'tutorial-shell--embedded' : 'tutorial-shell--standalone'}`}>
+      <div className="tutorial-card">
+        <div className="tutorial-page-content">
+          <div className="level-1__header">
+            <div>
+              <span className="level-1__eyebrow">Tutorial</span>
             </div>
-          )}
+            <div className="level-1__status-chip">Paso {currentStep + 1} de {tutorialData.length}</div>
+          </div>
+
+          <div className="tutorial-image-container">{renderImage()}</div>
+          <div className="tutorial-text-container">
+            <p className="tutorial-text" dangerouslySetInnerHTML={{ __html: tutorialData[currentStep].text }} />
+          </div>
+
+          <div className="tutorial__summary">
+            <button
+              className="tutorial__button tutorial__button--prev"
+              onClick={handlePrev}
+              disabled={currentStep === 0}
+            >
+              Atrás
+            </button>
+            <div className="dots">
+              {tutorialData.map((_, index) => (
+                <span
+                  key={index}
+                  className={`dot ${index === currentStep ? 'active' : ''}`}
+                  onClick={() => setCurrentStep(index)}
+                />
+              ))}
+            </div>
+            {isLastStep ? (
+              <button
+                className="tutorial__button tutorial__button--continue"
+                onClick={handleContinue}
+              >
+                Continuar
+              </button>
+            ) : (
+              <button
+                className="tutorial__button tutorial__button--next"
+                onClick={handleNext}
+              >
+                Siguiente
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
