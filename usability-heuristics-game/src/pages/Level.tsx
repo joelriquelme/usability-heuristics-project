@@ -100,17 +100,17 @@ const Level: React.FC = () => {
   };
 
   const handleModeChange = (newMode: GameMode) => {
-  if (newMode === 'corrected') {
-    setShowCorrectLevel(true);
-    setEvaluative(false); // O true, dependiendo de si 'corregido' mantiene el fondo evaluativo
-  } else if (newMode === 'evaluative') {
-    setShowCorrectLevel(false);
-    setEvaluative(true);
-  } else {
-    // Exploratorio
-    setShowCorrectLevel(false);
-    setEvaluative(false);
-  }
+    if (newMode === 'corrected') {
+      setShowCorrectLevel(true);
+      setEvaluative(false);
+    } else if (newMode === 'evaluative') {
+      setShowCorrectLevel(false);
+      setEvaluative(true);
+    } else {
+      // Exploratorio
+      setShowCorrectLevel(false);
+      setEvaluative(false);
+    }
   };
 
   useEffect(() => {

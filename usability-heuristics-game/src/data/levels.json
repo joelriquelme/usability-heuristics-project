@@ -28,6 +28,11 @@
     "description": "Observa cómo la disposición espacial y los signos invertidos (sliders, botones, controles) generan confusión y errores mentales.",
     "heuristic": "Coincidencia entre el Sistema y el Mundo Real"
   },
+  "6": {
+    "title": "El laberinto del Asistente",
+    "description": "Comprende la importancia de ofrecer 'salidas de emergencia' claras para que los usuarios puedan corregir errores.",
+    "heuristic": "Control y libertad del usuario"
+  },
   "7": {
     "title": "Publicación equivocada",
     "description": "Reconoce la importancia de ofrecer opciones para cancelar, editar o deshacer acciones en redes sociales o foros.",

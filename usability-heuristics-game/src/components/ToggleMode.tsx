@@ -41,16 +41,15 @@ export const ToggleMode: React.FC<Props> = ({
           Evaluativo
         </button>
 
-        {/* Botón Corregido (Condicionado a allCorrect) */}
-        {allCorrect && (
-          <button
-            type="button"
-            className={`toggle-btn ${currentMode === 'corrected' ? 'active' : ''}`}
-            onClick={() => onChangeMode('corrected')}
-          >
-            Corregido
-          </button>
-        )}
+        {/* Botón Corregido */}
+        <button
+          type="button"
+          className={`toggle-btn ${currentMode === 'corrected' ? 'active' : ''} ${!allCorrect ? 'disabled' : ''}`}
+          onClick={() => allCorrect && onChangeMode('corrected')}
+          disabled={!allCorrect}
+        >
+          Corregido
+        </button>
       </div>
     </div>
   )

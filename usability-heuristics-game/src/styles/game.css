@@ -137,21 +137,38 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
 /* responsive */
 @media (max-width:800px) { .uh-sidebar { display:none; } .uh-game-screen { margin:18px; } }
 
-.toggle-mode {
-  background-color: #ceeaff; /* Light cyan background */
-  padding: 20px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-  border: 1px solid #99dfff;
+/* Triple Toggle Styles */
+.triple-toggle {
+  display: flex;
+  background-color: #f1f5f9;
+  padding: 4px;
+  border-radius: 12px;
+  gap: 2px;
+  border: 1px solid #e2e8f0;
 }
 
-.toggle-mode__label {
-  font-size: 16px; /* Slightly larger text */
-  color: var(--text);
+.toggle-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   font-weight: 600;
+  color: #64748b;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.toggle-btn.active {
+  background: #007aff;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,122,255,0.2);
+}
+
+.toggle-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(1);
 }
 
 /* QuestionBox component styles */

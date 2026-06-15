@@ -261,6 +261,26 @@
         { "text": "No, porque no está visible.", "isCorrect": false },
         { "text": "Sí, porque guarda cambios y confirma al usuario.", "isCorrect": false }
       ]
+    },
+    {
+      "id": "level-6-step-indicators",
+      "question": "¿Los indicadores de paso rompen la heurística de control y libertad del usuario?",
+      "options": [
+        { "text": "No, porque muestran claramente en qué paso se encuentra el usuario.", "isCorrect": false },
+        { "text": "Sí, porque los colores no son consistentes con la interfaz.", "isCorrect": false },
+        { "text": "Sí, porque no permiten navegar entre secciones.", "isCorrect": true },
+        { "text": "No, porque sigue el estándar de la industria para representar el progreso.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": "level-6-back-button",
+      "question": "¿Cómo rompen la heurística de control y libertad del usuario los controles de navegación?",
+      "options": [
+        { "text": "Al no existir un botón de confirmación para comprobar los datos antes de crear la cuenta.", "isCorrect": false },
+        { "text": "Al no mostrar claramente el progreso del usuario.", "isCorrect": false },
+        { "text": "Al no ser de color verde el botón de 'Siguiente'.", "isCorrect": false },
+        { "text": "Al no poder retroceder a pasos anteriores.", "isCorrect": true }
+      ]
     }
   ]
 }
