@@ -1,48 +1,90 @@
-.tutorial-container {
+/* Outer shell: centers the tutorial card. */
+.tutorial-shell {
+  width: 100%;
+}
+
+/* Standalone /tutorial route: fill the available viewport height and center
+   the card both horizontally and vertically. */
+.tutorial-shell--standalone {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  min-height: calc(100vh - 72px - 40px);
+}
+
+/* Embedded inside the Level 1 intro overlay (already centered by the overlay). */
+.tutorial-shell--embedded {
+  display: block;
+}
+
+/* The card that contains the whole tutorial. */
+.tutorial-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--content-bg, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .tutorial-page-content {
   width: 100%;
-  max-width: var(--level-max-width);
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .tutorial-content {
   text-align: center;
 }
 
+/* Image box: fixed height so the vertical size stays constant between steps.
+   Using vh keeps it identical across steps (the viewport doesn't change). */
 .tutorial-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: clamp(220px, 42vh, 380px);
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 8px;
 }
 
+/* The image always fits inside the box, keeping its aspect ratio. */
 .tutorial-image {
-  max-width: 60vw;
-  max-height: 50vh;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
-  margin: 5px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Text box: fixed height so the total card height is constant between steps.
+   Long texts scroll inside instead of growing the card. */
+.tutorial-text-container {
+  height: 7em;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tutorial-text {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  margin-inline: 3em;
+  font-size: 1.1rem;
+  margin: 0;
+  margin-inline: 1.5em;
   text-align: center;
-  font-family: 'Arial', sans-serif; /* Change font to Arial */
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
 }
 
 .tutorial-navigation {
@@ -50,19 +92,6 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-}
-
-.nav-arrow {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.nav-arrow:hover {
-  background-color: #0056b3;
 }
 
 .dots {
@@ -83,16 +112,17 @@
   background-color: #007bff;
 }
 
+/* Navigation buttons */
 .tutorial__button {
   border: 1px solid #d1d5db;
   background: #fff;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-  margin: 0 10px;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  padding: 10px 22px;
+  min-width: 120px;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #1f2937;
 }
 
@@ -103,15 +133,38 @@
 }
 
 .tutorial__button:disabled {
-  opacity: 0.8;
+  opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
+/* "Siguiente": filled primary button. */
+.tutorial__button--next {
+  background: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.tutorial__button--next:hover {
+  background: #0069d9;
+  border-color: #0069d9;
+}
+
+/* "Continuar": filled button shown (with "Atrás") on the final step. */
+.tutorial__button--continue {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+
+.tutorial__button--continue:hover {
+  background: #15803d;
+  border-color: #15803d;
+}
 
 .tutorial__summary {
   margin-top: 0px;
-  padding: 6px 0 0;
+  padding: 10px 0 0;
   border-top: 1px solid #e5e7eb;
   display: flex;
   justify-content: space-between;
