@@ -238,7 +238,7 @@ const Level: React.FC = () => {
                 aria-expanded={modeTabOpen}
                 aria-controls="mode-tab-panel"
               >
-                Modo
+                {getCurrentMode() === 'exploratory' ? 'Exploratorio' : getCurrentMode() === 'evaluative' ? 'Evaluativo' : 'Corregido'}
               </button>
               <div id="mode-tab-panel" className="mode-tab__panel" aria-hidden={!modeTabOpen}>
                 {/* Inyectamos las nuevas propiedades aquí */}
