@@ -28,7 +28,7 @@ export const Sidebar: React.FC = () => {
     <aside className="uh-sidebar">
       <div className="uh-sidebar-header">Niveles</div>
       <ul className="uh-level-list">
-        {Array.from({ length: 9 }).map((_, i) => {
+        {Array.from({ length: 8 }).map((_, i) => {
           const levelId = String(i + 1)
           const completed = isLevelCompleted(levelId)
           return (
