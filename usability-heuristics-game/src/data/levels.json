@@ -37,5 +37,10 @@
     "title": "Publicación equivocada",
     "description": "Reconoce la importancia de ofrecer opciones para cancelar, editar o deshacer acciones en redes sociales o foros.",
     "heuristic": "Control y libertad del usuario"
+  },
+  "8": {
+    "title": "Correo equivocado",
+    "description": "Descubre cómo la falta de prevención de errores en un formulario de correo permite envíos inválidos, duplicados y sin advertencias.",
+    "heuristic": "Prevención de errores"
   }
 }

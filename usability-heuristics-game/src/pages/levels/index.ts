@@ -21,7 +21,8 @@ export const levels: Record<string, React.LazyExoticComponent<React.ComponentTyp
   '7': React.lazy(() => import('../Level_7')),
   '7_correct': React.lazy(() => import('../Level_7_correct'))
   ,
-  '8': React.lazy(() => import('../Level_8'))
+  '8': React.lazy(() => import('../Level_8')),
+  '8_correct': React.lazy(() => import('../Level_8_correct'))
 }
 
 export function getLevelComponent(id?: string) {

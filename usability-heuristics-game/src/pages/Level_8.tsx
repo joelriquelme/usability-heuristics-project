@@ -1,230 +1,204 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../styles/Level_8.css'
 
-type Task = {
-  id: string
-  title: string
-  selected?: boolean
-  saved?: boolean
-  favorite?: boolean
-  sent?: boolean
-  completed?: boolean
+interface SentEmail {
+  para: string
+  asunto: string
+  mensaje: string
+  timestamp: string
+  errors: string[]
 }
 
-const initialTasks: Task[] = [
-  { id: 't1', title: 'Preparar informe semanal' },
-  { id: 't2', title: 'Revisar PR #34' },
-  { id: 't3', title: 'Enviar actualización al cliente' }
-]
-
-const Icon: React.FC<{label: string; children: React.ReactNode}> = ({ label, children }) => (
-  <span className="level-8__icon-inner" aria-hidden>{children}</span>
-)
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const Level_8: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks)
+  const [para, setPara] = useState('')
+  const [asunto, setAsunto] = useState('')
+  const [mensaje, setMensaje] = useState('')
   const [notification, setNotification] = useState<string | null>(null)
-  const [buttonCorrect, setButtonCorrect] = useState<Record<string, boolean>>({})
-  const [isLoggedOut, setIsLoggedOut] = useState<boolean>(false)
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false)
-  const [loginUser, setLoginUser] = useState<string>('usuario@example.com')
-  const [loginPass, setLoginPass] = useState<string>('contraseña123')
+  const [notifExiting, setNotifExiting] = useState(false)
+  const [notifType, setNotifType] = useState<'success' | 'warning' | 'error'>('success')
+  const [history, setHistory] = useState<SentEmail[]>([])
+  const [activeTab, setActiveTab] = useState<'compose' | 'history'>('compose')
+  const notifTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
   useEffect(() => {
-    if (!notification) return
-    const t = setTimeout(() => setNotification(null), 2500)
-    return () => clearTimeout(t)
-  }, [notification])
+    return () => clearTimeout(notifTimer.current)
+  }, [])
 
-  function toggleSelect(id: string) {
-    setTasks(prev => prev.map(t => t.id === id ? { ...t, selected: !t.selected } : t))
-  }
-
-  function showNotification(msg: string) {
+  const showNotif = (msg: string) => {
+    setNotifExiting(false)
     setNotification(msg)
+    clearTimeout(notifTimer.current)
+    notifTimer.current = setTimeout(() => {
+      setNotifExiting(true)
+      setTimeout(() => {
+        setNotification(null)
+        setNotifExiting(false)
+      }, 200)
+    }, 3000)
   }
 
-  function markButtonTemp(action: string) {
-    setButtonCorrect(prev => ({ ...prev, [action]: true }))
-    setTimeout(() => setButtonCorrect(prev => ({ ...prev, [action]: false })), 1400)
+  const detectErrors = (): string[] => {
+    const errs: string[] = []
+    if (!EMAIL_REGEX.test(para) && para.length > 0) errs.push('Destinatario inválido')
+    if (para.length === 0) errs.push('Destinatario vacío')
+    if (asunto.trim().length === 0) errs.push('Sin asunto')
+    if (mensaje.trim().length === 0) errs.push('Mensaje vacío')
+    return errs
   }
 
-  function handleAction(action: 'save' | 'star' | 'send' | 'check') {
-    if (isLoggedOut) {
-      showNotification('No se puede ejecutar la acción: sesión cerrada')
-      return
+  const handleSend = () => {
+    const errors = detectErrors()
+
+    const entry: SentEmail = {
+      para: para || '(vacío)',
+      asunto: asunto || '(sin asunto)',
+      mensaje: mensaje || '(vacío)',
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      errors,
     }
 
-    // For 'check' (logout) we do not require selection.
-    if (action === 'check') {
-      setIsLoggedOut(true)
-      setTasks(prev => prev.map(t => ({ ...t, selected: false })))
-      showNotification('Sesión cerrada (emulada)')
-      markButtonTemp(action)
-      return
-    }
+    setHistory(prev => [entry, ...prev])
 
-    const selected = tasks.filter(t => t.selected)
-    if (selected.length === 0) {
-      showNotification('Selecciona al menos una tarea')
-      return
+    if (errors.length > 0) {
+      const onlySubjectIssue = errors.length === 1 && errors[0] === 'Sin asunto'
+      if (onlySubjectIssue) {
+        setNotifType('warning')
+        showNotif('Correo enviado sin asunto')
+      } else {
+        setNotifType('error')
+        showNotif(`No pudo llegar al destinatario: ${errors.join(', ')}`)
+      }
+    } else {
+      setNotifType('success')
+      showNotif('Correo enviado correctamente')
     }
-
-    // NOTE: Intentionally wrong mappings to emulate bad icon semantics
-    if (action === 'save') {
-      // disquete -> en realidad envía al responsable por correo
-      setTasks(prev => prev.map(t => t.selected ? { ...t, sent: true, selected: false } : t))
-      showNotification(`${selected.length} tarea(s) enviada(s) al responsable por correo`)
-    }
-
-    if (action === 'star') {
-      // estrella -> en vez de favorito, elimina el contenido
-      const ids = new Set(selected.map(s => s.id))
-      setTasks(prev => prev.filter(t => !ids.has(t.id)))
-      showNotification(`${selected.length} tarea(s) eliminada(s)`)
-    }
-
-      if (action === 'send') {
-        // avión de papel -> marca la(s) tarea(s) como completadas (emulado)
-        setTasks(prev => prev.map(t => t.selected ? { ...t, completed: true, selected: false } : t))
-        showNotification(`${selected.length} tarea(s) marcada(s) como completada(s)`)
-    }
-
-    markButtonTemp(action)
   }
 
-  function openLoginModal() {
-    setShowLoginModal(true)
-  }
-
-  function closeLoginModal() {
-    setShowLoginModal(false)
-  }
-
-  function submitLogin(e?: React.FormEvent) {
-    e && e.preventDefault()
-    // accept any credentials
-    setIsLoggedOut(false)
-    setShowLoginModal(false)
-    showNotification('Sesión iniciada (emulada)')
-  }
+  const historyCount = history.length
 
   return (
     <div className="level-8">
       <header className="level-8__header">
-        <div>
-          <span className="level-8__eyebrow">Dashboard</span>
-          <h2 className="level-8__title">Panel de control</h2>
-          <p className="level-8__intro">Barra de herramientas con íconos sin etiquetas. Selecciona tareas y usa las herramientas para emular acciones.</p>
-        </div>
-
-        <div className="level-8__toolbar" role="toolbar" aria-label="Herramientas">
-          <button
-            className={`level-8__tool ${buttonCorrect['save'] ? 'correct-answer' : ''} ${isLoggedOut ? 'disabled' : ''}`}
-            data-eval="show"
-            question-id="level-8-icon-save"
-            aria-label="save"
-            onClick={() => handleAction('save')}
-            disabled={isLoggedOut}
-          >
-            <Icon label="save">💾</Icon>
-            <span className="level-8__tooltip">Guardar (esperado)</span>
-          </button>
-
-          <button
-            className={`level-8__tool ${buttonCorrect['star'] ? 'correct-answer' : ''} ${isLoggedOut ? 'disabled' : ''}`}
-            data-eval="show"
-            question-id="level-8-icon-star"
-            aria-label="star"
-            onClick={() => handleAction('star')}
-            disabled={isLoggedOut}
-          >
-            <Icon label="star">⭐</Icon>
-            <span className="level-8__tooltip">Eliminar</span>
-          </button>
-
-          <button
-            className={`level-8__tool ${buttonCorrect['send'] ? 'correct-answer' : ''} ${isLoggedOut ? 'disabled' : ''}`}
-            data-eval="show"
-            question-id="level-8-icon-send"
-            aria-label="send"
-            onClick={() => handleAction('send')}
-            disabled={isLoggedOut}
-          >
-            <Icon label="send">✈️</Icon>
-            <span className="level-8__tooltip">Tarea Completada</span>
-          </button>
-
-          <button
-            className={`level-8__tool ${buttonCorrect['check'] ? 'correct-answer' : ''} ${isLoggedOut ? 'disabled' : ''}`}
-            data-eval="show"
-            question-id="level-8-icon-check"
-            aria-label="check"
-            onClick={() => handleAction('check')}
-            disabled={isLoggedOut}
-          >
-            <Icon label="check">✔️</Icon>
-            <span className="level-8__tooltip">Confirmar (esperado)</span>
-          </button>
-
-          {isLoggedOut && (
-            <button className="level-8__login" onClick={openLoginModal} aria-label="Iniciar sesión">Iniciar sesión</button>
-          )}
+        <div className="level-8__brand">
+          <span className="level-8__brand-icon">✉</span>
+          <span className="level-8__brand-name">Correo Institucional</span>
         </div>
       </header>
 
-      <main className="level-8__main">
-        <ul className="level-8__tasks">
-          {tasks.map((t) => (
-            <li
-              key={t.id}
-              className={`level-8__task ${t.selected ? 'level-8__task--selected' : ''}`}
-              onClick={() => toggleSelect(t.id)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSelect(t.id) } }}
+      <div className="level-8__tabs">
+        <button
+          className={`level-8__tab ${activeTab === 'compose' ? 'level-8__tab--active' : ''}`}
+          onClick={() => setActiveTab('compose')}
+        >
+          Nuevo Correo
+        </button>
+        <button
+          className={`level-8__tab ${activeTab === 'history' ? 'level-8__tab--active' : ''}`}
+          onClick={() => setActiveTab('history')}
+        >
+          Enviados
+           {historyCount > 0 && <span className="level-8__tab-badge">{historyCount}</span>}
+        </button>
+      </div>
+
+      {activeTab === 'compose' ? (
+        <div className="level-8__form">
+          <div className="level-8__field-group">
+            <label className="level-8__label" htmlFor="level8-para">Para</label>
+            <div
+              className="level-8__field-wrapper"
+              data-eval="show"
+              question-id="level-8-email-field"
             >
-              <div className="level-8__task-left">
-                <div>
-                  <div className="level-8__task-title">{t.title}</div>
-                  <div className="level-8__badges">
-                    {t.saved && <span className="level-8__badge">Guardado</span>}
-                    {t.favorite && <span className="level-8__badge">Favorito</span>}
-                    {t.sent && <span className="level-8__badge">Enviado</span>}
-                    {t.completed && <span className="level-8__badge level-8__badge--success">Completada</span>}
+              <input
+                id="level8-para"
+                className="level-8__input"
+                type="text"
+                placeholder="correo@ejemplo.com"
+                value={para}
+                onChange={e => setPara(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="level-8__field-group">
+            <label className="level-8__label" htmlFor="level8-asunto">Asunto</label>
+            <div
+              className="level-8__field-wrapper"
+              data-eval="show"
+              question-id="level-8-subject-field"
+            >
+              <input
+                id="level8-asunto"
+                className="level-8__input"
+                type="text"
+                placeholder="Opcional"
+                value={asunto}
+                onChange={e => setAsunto(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="level-8__field-group">
+            <label className="level-8__label" htmlFor="level8-mensaje">Mensaje</label>
+            <textarea
+              id="level8-mensaje"
+              className="level-8__input level-8__textarea"
+              placeholder="Escribe tu mensaje aquí..."
+              rows={5}
+              value={mensaje}
+              onChange={e => setMensaje(e.target.value)}
+            />
+          </div>
+
+          <div
+            className="level-8__send-area">
+            <div data-eval="show" question-id="level-8-send-button">
+            <button className="level-8__send-btn" onClick={handleSend}>
+              Enviar Correo
+            </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="level-8__history">
+          {history.length === 0 ? (
+            <div className="level-8__history-empty">
+              No hay correos enviados todavía.
+            </div>
+          ) : (
+            history.map((item, i) => {
+              const onlySubject = item.errors.length === 1 && item.errors[0] === 'Sin asunto'
+              const itemClass = item.errors.length === 0 ? '' : onlySubject ? 'level-8__history-item--warning' : 'level-8__history-item--error'
+
+              return (
+                <div key={i} className={`level-8__history-item ${itemClass}`}>
+                  <div className="level-8__history-item-header">
+                    <span className="level-8__history-item-to">Para: {item.para}</span>
+                    <span className="level-8__history-item-time">{item.timestamp}</span>
                   </div>
+                  <div className="level-8__history-item-subject">
+                    Asunto: {item.asunto}
+                  </div>
+                  {item.errors.length > 0 && (
+                    <div className="level-8__history-item-errors">
+                      {item.errors.map((err, j) => (
+                        <span key={j} className={`level-8__history-error-badge ${onlySubject ? 'level-8__history-error-badge--warning' : ''}`}>{err}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-
-              <div className="level-8__task-actions">
-                <button className="level-8__action" onClick={(e) => { e.stopPropagation(); /* edit emulation can go here */ }}>Editar</button>
-                <button className="level-8__action level-8__action--danger" onClick={(e) => { e.stopPropagation(); setTasks(prev => prev.filter(x => x.id !== t.id)) }}>Eliminar</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </main>
-
-      {notification && (
-        <div className="level-8__notification" role="status">{notification}</div>
+              )
+            })
+          )}
+        </div>
       )}
 
-      {showLoginModal && (
-        <div className="level-8__modal-overlay" onClick={closeLoginModal} role="dialog" aria-modal="true">
-          <div className="level-8__modal" onClick={(e) => e.stopPropagation()}>
-            <h3>Iniciar sesión</h3>
-            <form onSubmit={submitLogin}>
-              <label className="level-8__modal-label">Usuario</label>
-              <input className="level-8__modal-input" value={loginUser} onChange={e => setLoginUser(e.target.value)} />
-              <label className="level-8__modal-label">Contraseña</label>
-              <input className="level-8__modal-input" type="password" value={loginPass} onChange={e => setLoginPass(e.target.value)} />
-              <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-                <button type="submit" className="level-8__action">Iniciar sesión</button>
-                <button type="button" className="level-8__action level-8__action--danger" onClick={closeLoginModal}>Cancelar</button>
-              </div>
-            </form>
-            <p style={{ marginTop: 12, color: '#6b7280' }}>Acepta cualquier credencial (emulado).</p>
-          </div>
+      {(notification || notifExiting) && (
+        <div className={`level-8__notification level-8__notification--${notifType} ${notifExiting ? 'level-8__notification--exit' : ''}`} role="status">
+          {notification}
         </div>
       )}
     </div>

@@ -82,10 +82,6 @@ const Level6Correct: React.FC = () => {
             <div className="level-6__success-icon">✓</div>
             <h2>¡Cuenta creada exitosamente!</h2>
             <p>Bienvenido, <strong>{formValues.nombre}</strong>. Tu plan <strong>{formValues.plan}</strong> está activo.</p>
-            <div className="level-6__edit-hint">
-              <span className="level-6__hint-icon">!</span>
-              <span>Puedes seguir editando tus datos usando los indicadores de paso o el botón Atrás.</span>
-            </div>
           </div>
         ) : currentStep === 1 ? (
           <div className="level-6__step-content">

@@ -223,43 +223,33 @@
       ]
     },
     {
-      "id": "level-8-icon-save",
-      "question": "¿El ícono de disquete realiza la acción esperada 'Guardar'?",
+      "id": "level-8-email-field",
+      "question": "¿Qué solución evitaría que el usuario ingrese direcciones de correo inválidas?",
       "options": [
-        { "text": "No, actualmente ejecuta otra acción y no comunica 'guardar' claramente.", "isCorrect": true },
-        { "text": "Sí, porque siempre guarda automáticamente.", "isCorrect": false },
-        { "text": "No, porque está deshabilitado.", "isCorrect": false },
-        { "text": "Sí, porque muestra una confirmación después de guardar.", "isCorrect": false }
+        { "text": "Agrandar la letra del placeholder.", "isCorrect": false },
+        { "text": "Validar el formato en tiempo real y mostrar una advertencia si no es un correo válido.", "isCorrect": true },
+        { "text": "Eliminar el campo y usar solo una lista de contactos.", "isCorrect": false },
+        { "text": "Cambiar el color del input para que sea más visible.", "isCorrect": false }
       ]
     },
     {
-      "id": "level-8-icon-star",
-      "question": "¿La estrella representa 'favorito' o hace otra acción inconsistente?",
+      "id": "level-8-subject-field",
+      "question": "¿Cómo se podría evitar que el usuario envíe accidentalmente un correo sin asunto?",
       "options": [
-        { "text": "No, la estrella realiza una acción distinta a 'favorito', causando confusión.", "isCorrect": true },
-        { "text": "Sí, porque siempre añade a favoritos.", "isCorrect": false },
-        { "text": "No, porque no tiene efecto alguno.", "isCorrect": false },
-        { "text": "Sí, porque muestra una lista de favoritos al hacer clic.", "isCorrect": false }
+        { "text": "Agregar un icono de advertencia permanente al lado del campo.", "isCorrect": false },
+        { "text": "Mostrar una ventana de confirmación preguntando si desea enviar sin asunto.", "isCorrect": true },
+        { "text": "Poner un texto en rojo que diga 'Completa este campo'.", "isCorrect": false },
+        { "text": "Hacer el campo asunto obligatorio y no permitir enviar si está vacío.", "isCorrect": false }
       ]
     },
     {
-      "id": "level-8-icon-send",
-      "question": "¿El icono de avión de papel ejecuta la acción esperada 'Enviar'?",
+      "id": "level-8-send-button",
+      "question": "¿Qué cambios en el botón 'Enviar Correo' mejorarían la prevención de errores?",
       "options": [
-        { "text": "No, suele ejecutar otra función y rompe la convención de iconos.", "isCorrect": true },
-        { "text": "Sí, porque abre un diálogo de envío.", "isCorrect": false },
-        { "text": "No, porque el icono está mal dibujado.", "isCorrect": false },
-        { "text": "Sí, porque añade la tarea a la cola de envío.", "isCorrect": false }
-      ]
-    },
-    {
-      "id": "level-8-icon-check",
-      "question": "¿El check confirma acciones o realiza otra acción inconsistente?",
-      "options": [
-        { "text": "No, está mapeado a una acción diferente (por ejemplo cerrar sesión), lo que confunde al usuario.", "isCorrect": true },
-        { "text": "Sí, porque siempre confirma correctamente.", "isCorrect": false },
-        { "text": "No, porque no está visible.", "isCorrect": false },
-        { "text": "Sí, porque guarda cambios y confirma al usuario.", "isCorrect": false }
+        { "text": "Moverlo a la parte superior del formulario.", "isCorrect": false },
+        { "text": "Cambiar su color a rojo para que sea más llamativo.", "isCorrect": false },
+        { "text": "Deshabilitarlo hasta que todos los campos obligatorios sean válidos y bloquearlo durante el envío.", "isCorrect": true },
+        { "text": "Agregar un mensaje emergente que diga '¿Estás seguro?' siempre.", "isCorrect": false }
       ]
     },
     {

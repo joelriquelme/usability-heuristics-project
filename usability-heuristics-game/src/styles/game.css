@@ -236,12 +236,12 @@ body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Robot
 }
 
 /* Evaluative highlight */
-.evaluative-highlight {
+.evaluative-mode [data-eval="show"] {
   position: relative;
   cursor: pointer;
 }
 
-.evaluative-highlight::before {
+.evaluative-mode [data-eval="show"]::before {
   content: '';
   position: absolute;
   top: 0;

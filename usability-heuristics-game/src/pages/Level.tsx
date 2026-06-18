@@ -36,47 +36,33 @@ const Level: React.FC = () => {
   const interfaceTabRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const elements = document.querySelectorAll('[data-eval="show"]');
-
-    if (evaluative) {
-      elements.forEach((element) => {
-        (element as HTMLElement).classList.add('evaluative-highlight');
-      });
-    } else {
-      elements.forEach((element) => {
-        (element as HTMLElement).classList.remove('evaluative-highlight');
-      });
-    }
+    if (!evaluative) return
 
     const handleHighlightClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (target.classList.contains('evaluative-highlight')) {
-        const questionId = target.getAttribute('question-id');
-        if (questionId) {
-          const questionData = questionsData.questions.find((q) => q.id === questionId);
-          if (questionData) {
-            setQuestionBoxData({
-              question: questionData.question,
-              options: questionData.options,
-              visible: true,
-              triggeringElement: target, // Store the triggering element
-            });
-          } else {
-            console.error(`No question found for question-id: ${questionId}`);
-          }
+      const target = (event.target as HTMLElement).closest('[data-eval="show"]') as HTMLElement | null
+      if (!target) return
+      const questionId = target.getAttribute('question-id')
+      if (questionId) {
+        const questionData = questionsData.questions.find((q) => q.id === questionId)
+        if (questionData) {
+          setQuestionBoxData({
+            question: questionData.question,
+            options: questionData.options,
+            visible: true,
+            triggeringElement: target,
+          })
+        } else {
+          console.error(`No question found for question-id: ${questionId}`)
         }
       }
-    };
+    }
 
-    document.addEventListener('click', handleHighlightClick);
+    document.addEventListener('click', handleHighlightClick)
 
     return () => {
-      elements.forEach((element) => {
-        (element as HTMLElement).classList.remove('evaluative-highlight');
-      });
-      document.removeEventListener('click', handleHighlightClick);
-    };
-  }, [evaluative]);
+      document.removeEventListener('click', handleHighlightClick)
+    }
+  }, [evaluative])
 
   // Intro is shown by default on entering the level. Do not persist closure.
   const handleCloseIntro = () => {
