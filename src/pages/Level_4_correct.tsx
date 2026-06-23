@@ -77,6 +77,7 @@ const Level4Correct: React.FC = () => {
         </div>
       </section>
 
+      <div className="task-list-container">
       <ul className="task-list">
         {tasks.map((task) => (
           <li key={task.id} className="task-item">
@@ -117,6 +118,7 @@ const Level4Correct: React.FC = () => {
           </li>
         ))}
       </ul>
+      </div>
 
     </div>
   )
