@@ -17,7 +17,7 @@
   },
   {
     "image": "./src/assets/tutorial/tutorial-button.jpg",
-    "text": "Al presionar el botón 'Modo', se mostrará una ventana con las opciones de modo de juego. Esto te permite alternar entre el modo exploratorio y el evaluativo. Cuando te sientas listo, cambia al modo evaluativo para comenzar el desafío."
+    "text": "Al presionar el botón de abajo a la izquierda se mostrará una ventana con las opciones de modo de juego. Esto te permite alternar entre el modo exploratorio y el evaluativo. Cuando te sientas listo, cambia al modo evaluativo para comenzar el desafío."
   },
   {
     "image": "./src/assets/tutorial/tutorial-eval-mode.jpg",
@@ -37,10 +37,10 @@
   },
   {
     "image": "./src/assets/tutorial/tutorial-interface-correct.jpg",
-    "text": "Al igual que el botón 'Modo', el botón 'Interfaz' también abre una ventana con opciones. Al seleccionar 'Corregida', podrás comparar la interfaz original con una versión mejorada que corrige los problemas de usabilidad identificados. Cuando estés listo, puedes avanzar al siguiente nivel para enfrentar nuevos desafíos en la barra lateral."
+    "text": "Al seleccionar 'Corregido', podrás comparar la interfaz original con una versión mejorada que corrige los problemas de usabilidad identificados. Cuando estés list@, puedes avanzar al siguiente nivel para enfrentar nuevos desafíos en la barra lateral."
   },
   {
     "image": "./src/assets/tutorial/tutorial-red-panda-end.jpg",
-    "text": "¡Felicidades por completar el tutorial! Ahora estás list@ para enfrentar los desafíos de los niveles y aplicar tus conocimientos sobre heurísticas de usabilidad. ¡Buena suerte!<br>En caso de encontrar cualquier bug o error, no dudes en reportarlo directamente a mi telegram @rebirth_j0wel."
+    "text": "¡Felicidades por completar el tutorial! ¡Buena suerte!<br>En caso de encontrar cualquier bug o error, no dudes en reportarlo directamente a mi telegram @rebirth_j0wel."
   }
 ]
