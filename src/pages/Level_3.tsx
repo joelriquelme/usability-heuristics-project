@@ -15,14 +15,12 @@ const songs = Object.keys(songModules).map((p, idx) => {
 const Level3: React.FC = () => {
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
-  const [progress, setProgress] = useState(0) // 0-100
   const [volume, setVolume] = useState(0) // 0-10
   const audioCtxRef = useRef<AudioContext | null>(null)
   const gainRef = useRef<GainNode | null>(null)
   const mediaSourceRef = useRef<MediaElementAudioSourceNode | null>(null)
   const audioElRef = useRef<HTMLAudioElement | null>(null)
   const progRafRef = useRef<number | null>(null)
-  const TRACK_DURATION = 90 // seconds simulated track length
 
   // visualizer removed: static icon will be shown in UI instead of canvas
 
@@ -33,14 +31,10 @@ const Level3: React.FC = () => {
       else stopAudio()
       return next
     })
-    // when starting, if progress is complete reset
-    setProgress(p => (p >= 100 ? 0 : p))
   }
 
   function next() {
     setIndex(i => (i + 1) % songs.length)
-    const ni = (index + 1) % songs.length
-    setProgress(0)
     setPlaying(false)
     stopAudio()
     // do not auto-play next; if you want auto-play, call startAudio(ni)
@@ -48,8 +42,6 @@ const Level3: React.FC = () => {
 
   function prev() {
     setIndex(i => (i - 1 + songs.length) % songs.length)
-    const ni = (index - 1 + songs.length) % songs.length
-    setProgress(0)
     setPlaying(false)
     stopAudio()
     // do not auto-play prev; if you want auto-play, call startAudio(ni)
@@ -112,10 +104,6 @@ const Level3: React.FC = () => {
 
     // progress timing using audio duration when available
     function tick() {
-      const cur = audioEl.currentTime || 0
-      const dur = audioEl.duration && !isNaN(audioEl.duration) ? audioEl.duration : TRACK_DURATION
-      const pct = Math.min(100, (cur / dur) * 100)
-      setProgress(pct)
       if (!audioEl.paused) progRafRef.current = requestAnimationFrame(tick)
     }
     progRafRef.current = requestAnimationFrame(tick)
@@ -190,7 +178,7 @@ const Level3: React.FC = () => {
         <aside className="level-3__list" data-eval="show" question-id="level-3-song-list">
           <h4>Lista de canciones</h4>
           <ul>
-            {songs.map((s, i) => (
+            {songs.map((s) => (
               <li key={s.id} className="level-3__song-item">{s.title}</li>
             ))}
           </ul>

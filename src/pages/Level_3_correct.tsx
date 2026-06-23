@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { SlVolume2, SlVolume1 } from 'react-icons/sl'
-import { BsFillSkipForwardFill, BsFillSkipBackwardFill, BsAppleMusic } from 'react-icons/bs'
+import { BsFillSkipForwardFill, BsFillSkipBackwardFill} from 'react-icons/bs'
 import '../styles/Level_3.css'
 
 // Dynamically load all files from src/assets/songs using Vite's glob (returns URLs)
@@ -38,7 +38,6 @@ const Level3Correct: React.FC = () => {
 
   function next() {
     setIndex(i => (i + 1) % songs.length)
-    const ni = (index + 1) % songs.length
     setProgress(0)
     setPlaying(false)
     stopAudio()
@@ -47,7 +46,6 @@ const Level3Correct: React.FC = () => {
 
   function prev() {
     setIndex(i => (i - 1 + songs.length) % songs.length)
-    const ni = (index - 1 + songs.length) % songs.length
     setProgress(0)
     setPlaying(false)
     stopAudio()
