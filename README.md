@@ -14,7 +14,7 @@ La instalación de Node.js también instalará npm.
 ## Instalación
 
 1.  Clona el repositorio o descarga el código fuente en tu máquina.
-2.  Abre una terminal o línea de comandos y navega hasta el directorio raíz del proyecto (`usability-heuristics-game`).
+2.  Abre una terminal o línea de comandos y navega hasta el directorio raíz del proyecto (`usability-heuristics-project`).
 3.  Ejecuta el siguiente comando para instalar todas las dependencias del proyecto:
 
     ```bash
